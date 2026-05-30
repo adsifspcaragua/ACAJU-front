@@ -44,7 +44,7 @@ export default function ForgotPassword() {
           </button>
         </form>
 
-        <Link href="/login" style={{ display: 'block', fontSize: '12px', color: '#6b7280', textDecoration: 'none', marginTop: '15px' }}>
+        <Link href="../login" style={{ display: 'block', fontSize: '12px', color: '#6b7280', textDecoration: 'none', marginTop: '15px' }}>
           Voltar ao Login
         </Link>
 

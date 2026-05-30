@@ -41,7 +41,7 @@ export default function RegisterForm() {
       </form>
 
       <div style={styles.footer}>
-        <Link href="../login/page.js" style={styles.link}>Voltar ao Login</Link>
+        <Link href="/login" style={styles.link}>Voltar ao Login</Link>
       </div>
     </div>
   );
