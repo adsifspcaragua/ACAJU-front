@@ -1,10 +1,9 @@
-import LoginModal from '@/components/login-modal';
+import RegisterForm from '@/components/registerForm';
 
 export default function Home() {
   return (
-
-    <div style={styles.page}>
-       <LoginModal />
+    <div style={styles.page}>    
+       <RegisterForm />
     </div>
   );
 }
