@@ -63,7 +63,7 @@ const styles = {
     marginBottom: "32px",
   },
   title: {
-    color: "#244d28", // Verde escuro idêntico ao título da imagem
+    color: "#244d28",
     fontSize: "28px",
     fontWeight: "bold",
     margin: "0",
@@ -79,7 +79,7 @@ const styles = {
     gap: "6px",
   },
   label: {
-    color: "#475569", // Tom de azul/cinza para os labels da imagem
+    color: "#475569",
     fontSize: "14px",
     fontWeight: "600",
   },
@@ -94,7 +94,7 @@ const styles = {
     outline: "none",
   },
   button: {
-    backgroundColor: "#2e5c31", // Verde exato do botão "Solicitar Acesso"
+    backgroundColor: "#023b36",
     color: "#ffffff",
     border: "none",
     borderRadius: "6px",

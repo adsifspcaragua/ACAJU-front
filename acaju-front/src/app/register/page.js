@@ -1,4 +1,5 @@
 import RegisterForm from '@/components/registerForm';
+import "../page.login.css"
 
 export default function Home() {
   return (
@@ -10,7 +11,6 @@ export default function Home() {
 
 const styles = {
   page: {
-    backgroundColor: "#183f15",
     width: "100vw",             
     height: "100vh",           
     display: "flex",            

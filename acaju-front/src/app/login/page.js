@@ -1,4 +1,5 @@
 import LoginModal from '@/components/login-modal';
+import "../page.login.css"
 
 export default function Home() {
   return (
@@ -9,7 +10,14 @@ export default function Home() {
 }
 
 const styles = {
-  page: {
-    backgroundColor: "#183f15",
+   page: {
+    width: "100vw",             
+    height: "100vh",           
+    display: "flex",            
+    justifyContent: "center",   
+    alignItems: "center",       
+    margin: 0,
+    padding: "20px",
+    boxSizing: "border-box",
   }
 };
