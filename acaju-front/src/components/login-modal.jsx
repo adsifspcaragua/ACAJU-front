@@ -34,8 +34,8 @@ export default function LoginModal() {
       </form>
 
       <div style={styles.footer}>
-        <Link href="/register" style={styles.primaryLink}>Criar conta na plataforma</Link>
-        <Link href="../forgotPassword/page.js" style={styles.secondaryLink}>Esqueci minha senha</Link>
+        <Link href="/admin/register" style={styles.primaryLink}>Criar conta na plataforma</Link>
+        <Link href="/admin/forgotPassword/" style={styles.secondaryLink}>Esqueci minha senha</Link>
       </div>
     </div>
   );

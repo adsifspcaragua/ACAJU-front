@@ -41,7 +41,7 @@ export default function RegisterForm() {
       </form>
 
       <div style={styles.footer}>
-        <Link href="/login" style={styles.link}>Voltar ao Login</Link>
+        <Link href="/admin/login" style={styles.link}>Voltar ao Login</Link>
       </div>
     </div>
   );
@@ -54,7 +54,7 @@ const styles = {
     maxWidth: "440px",
     borderRadius: "16px",
     padding: "40px",
-    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+   boxShadow: "0 20px 40px rgba(4, 89, 80, 0.25)",
     boxSizing: "border-box",
     fontFamily: "sans-serif",
   },
@@ -110,7 +110,7 @@ const styles = {
     textAlign: "center",
   },
   link: {
-    color: "#64748b", // Cor cinza discreta para o "Voltar ao Login"
+    color: "#64748b", 
     fontSize: "14px",
     textDecoration: "none",
   },
