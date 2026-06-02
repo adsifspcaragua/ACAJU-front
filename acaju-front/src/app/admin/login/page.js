@@ -1,16 +1,16 @@
-import Link from "next/link";
+import LoginModal from '@/components/Login-modal';
+import '@/app/admin/page.admin.css';
 
-export default function Home() {
+export default function Login() {
   return (
-    
     <div style={styles.page}>
-       <Link href="../admin/login" style={styles.primaryLink}>Servidor</Link>
+       <LoginModal />    
     </div>
   );
 }
 
 const styles = {
-  page: {
+   page: {
     width: "100vw",             
     height: "100vh",           
     display: "flex",            
@@ -19,11 +19,5 @@ const styles = {
     margin: 0,
     padding: "20px",
     boxSizing: "border-box",
-  },
-    primaryLink: {
-    color: "#2e5c31",
-    fontSize: "14px",
-    fontWeight: "Bold",
-    textDecoration: "none",
-  },
+  }
 };
