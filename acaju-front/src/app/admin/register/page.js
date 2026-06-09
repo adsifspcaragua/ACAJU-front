@@ -11,7 +11,6 @@ export default function Register() {
 
 const styles = {
   page: {
-    backgroundImage: "linear-gradient(135deg, #045950, #2DBFAF, #045950)",
     blur: "100px",
     width: "100vw",             
     height: "100vh",           
