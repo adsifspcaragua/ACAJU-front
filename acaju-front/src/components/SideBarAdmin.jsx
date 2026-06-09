@@ -65,6 +65,7 @@ export default function SideBarAdmin() {
   );
 }
 
+
 const styles = {
   sideBar: {
     backgroundColor: "#1e4620",
