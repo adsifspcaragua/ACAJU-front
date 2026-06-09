@@ -1,30 +1,74 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function LoginModal() {
 
-  return (
-    
-    <div style={styles.card}>
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3300/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password: pass })
+      });
+
+      const data = await response.json(); 
+
+      if (response.ok) {
+        console.log(data);
+        alert(data.message || "Login realizado com sucesso!");
+
+      } else {
+        console.error('Erro no login', data);
+        alert(data.error || data.message || "Ocorreu um erro ao fazer login.");
+
+      }
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+      alert("Não foi possível conectar ao servidor.");
       
+    }
+  }
+
+  return (
+
+    <div style={styles.card}>
+
       <div style={styles.header}>
         <h2 style={styles.title}>ACAJU</h2>
         <p style={styles.subtitle}>Painel Administrativo</p>
       </div>
 
-      <form style={styles.form}>
+      <form style={styles.form} onSubmit={handleSubmit}>
         <div style={styles.inputGroup}>
-          <label style={styles.label}>E-mail</label>
+          <label style={styles.label} htmlFor='email'>E-mail</label>
           <input
             type="email"
+            id='email'
+            name='email'
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             placeholder="admin@acaju.org"
             style={styles.input}
           />
         </div>
 
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Senha</label>
+          <label style={styles.label} htmlFor='pass'>Senha</label>
           <input
             type="password"
+            id='pass'
+            name='pass'
+            value={pass}
+            onChange={(event) => setPass(event.target.value)}
             placeholder="••••••••"
             style={styles.input}
           />
