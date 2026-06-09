@@ -41,7 +41,6 @@ export default function ForgotPassword() {
 
 const styles = {
   screenBackground: {
-    backgroundColor: "#023b36",
     width: "100vw",
     minHeight: "100vh",
     position: "fixed",

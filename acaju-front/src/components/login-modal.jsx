@@ -30,7 +30,7 @@ export default function LoginModal() {
           />
         </div>
 
-        <button type="submit" style={styles.button}>Entrar no Sistema</button>
+        <Link href="/admin/painelAdmin" style={styles.button}>Entrar no Sistema</Link>
       </form>
 
       <div style={styles.footer}>
@@ -40,7 +40,7 @@ export default function LoginModal() {
     </div>
   );
 }
-
+  
 const styles = {
   card: {
     backgroundColor: "#ffffff",
@@ -96,6 +96,7 @@ const styles = {
   button: {
     backgroundColor: "#023b36",
     color: "#ffffff",
+    textAlign: "center",
     border: "none",
     borderRadius: "8px",
     padding: "14px",
