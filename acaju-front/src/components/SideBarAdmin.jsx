@@ -68,7 +68,7 @@ export default function SideBarAdmin() {
 
 const styles = {
   sideBar: {
-    backgroundColor: "#1e4620",
+    backgroundColor: "#045950",
     width: "260px",
     minHeight: "100vh",
     padding: "30px 20px",
