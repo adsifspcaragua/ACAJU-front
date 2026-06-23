@@ -1,4 +1,4 @@
-import RegisterForm from '@/components/RegisterForm';
+import RegisterForm from '@/components/registerForm.jsx';
 import '@/app/admin/page.admin.css';
 
 export default function Register() {

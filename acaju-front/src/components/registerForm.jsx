@@ -1,37 +1,86 @@
-'useclient';
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function RegisterForm() {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3300/auth/cadastro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, pass })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log(data);
+        alert(data.message || "Cadastro realizado com sucesso!");
+
+      } else {
+        console.error('Erro no Cadastro', data);
+        alert(data.error || data.message || "Ocorreu um erro ao fazer Cadastro.");
+
+      }
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+      alert("Não foi possível conectar ao servidor.");
+
+    }
+  }
+
   return (
     <div style={styles.card}>
-      
+
       <div style={styles.header}>
         <h2 style={styles.title}>Criar Conta</h2>
       </div>
 
-      <form style={styles.form}>
+      <form style={styles.form} onSubmit={handleSubmit}>
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Nome Completo</label>
+          <label style={styles.label} htmlFor='name'>Nome Completo</label>
           <input
             type="text"
+            id='name'
+            name='name'
+            value={name}
+            onChange={(event) => setName(event.target.value)}
             placeholder="Seu nome"
             style={styles.input}
           />
         </div>
 
         <div style={styles.inputGroup}>
-          <label style={styles.label}>E-mail</label>
+          <label style={styles.label} htmlFor='email'>E-mail</label>
           <input
             type="email"
+            id='email'
+            name='email'
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
             placeholder="exemplo@email.com"
             style={styles.input}
           />
         </div>
 
         <div style={styles.inputGroup}>
-          <label style={styles.label}>Senha</label>
+          <label style={styles.label} htmlFor='pass'>Senha</label>
           <input
             type="password"
+            id='pass'
+            name='pass'
+            value={pass}
+            onChange={(event) => setPass(event.target.value)}
             placeholder="Mínimo 8 caracteres"
             style={styles.input}
           />
@@ -54,7 +103,7 @@ const styles = {
     maxWidth: "440px",
     borderRadius: "16px",
     padding: "40px",
-   boxShadow: "0 20px 40px rgba(4, 89, 80, 0.25)",
+    boxShadow: "0 20px 40px rgba(4, 89, 80, 0.25)",
     boxSizing: "border-box",
     fontFamily: "sans-serif",
   },
@@ -110,7 +159,7 @@ const styles = {
     textAlign: "center",
   },
   link: {
-    color: "#64748b", 
+    color: "#64748b",
     fontSize: "14px",
     textDecoration: "none",
   },
