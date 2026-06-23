@@ -7,22 +7,18 @@ import SideBarAdmin from "../../../components/SideBarAdmin";
 export default function GerenciarMutiroes() {
   return (
     <div style={styles.container}>
-      {/* 1. Barra Lateral Reutilizada */}
+     
       <SideBarAdmin />
-
-      {/* 2. Conteúdo Principal da Página */}
+     
       <main style={styles.mainContent}>
-        
-        {/* Cabeçalho superior */}
+       
         <div style={styles.header}>
           <h1 style={styles.pageTitle}>Gerenciar Mutirões</h1>
           <div style={styles.welcomeBadge}>BEM-VINDO, ADMINISTRADOR</div>
         </div>
 
-        {/* Formulário Branco */}
         <form style={styles.card} onSubmit={(e) => e.preventDefault()}>
           
-          {/* Nome do Mutirão */}
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>NOME DO MUTIRÃO</label>
             <input 
@@ -32,7 +28,6 @@ export default function GerenciarMutiroes() {
             />
           </div>
 
-          {/* Tipo de Mutirão e Data (Lado a lado) */}
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>TIPO DE MUTIRÃO</label>
@@ -49,7 +44,6 @@ export default function GerenciarMutiroes() {
             </div>
           </div>
 
-          {/* Local e Ambiente do Local (Lado a lado) */}
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>LOCAL</label>
@@ -73,7 +67,6 @@ export default function GerenciarMutiroes() {
             </div>
           </div>
 
-          {/* Imagem de Capa usando React Uploady */}
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>IMAGEM DE CAPA DO MUTIRÃO</label>
             <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
@@ -84,7 +77,6 @@ export default function GerenciarMutiroes() {
             </Uploady>
           </div>
 
-          {/* Descrição Curta */}
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>DESCRIÇÃO CURTA</label>
             <textarea 
@@ -93,7 +85,6 @@ export default function GerenciarMutiroes() {
             />
           </div>
 
-          {/* Botão de Envio */}
           <button type="submit" style={styles.submitButton}>
             Criar Mutirão
           </button>
@@ -108,7 +99,7 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    backgroundColor: "#199a8a", // Gradiente/tom esverdeado do fundo da sua imagem
+    backgroundColor: "#199a8a",
     backgroundImage: "linear-gradient(135deg, #0e4409 0%, #199a8a 100%)",
     fontFamily: "sans-serif",
     margin: 0,
@@ -231,15 +222,14 @@ const styles = {
     outline: "none",
   },
   submitButton: {
-    backgroundColor: "#085747", // O verde escuro exato do botão "Criar Mutirão"
-    color: "#ffffff",
+    backgroundColor: "#085747", 
     border: "none",
     borderRadius: "8px",
     padding: "14px 28px",
     fontSize: "15px",
     fontWeight: "bold",
     cursor: "pointer",
-    alignSelf: "flex-start", // Mantém o botão alinhado na esquerda
+    alignSelf: "flex-start", 
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
   },
 };
