@@ -26,7 +26,7 @@ export default function SideBarAdmin() {
             <Link href="/noticias" style={styles.link}>Notícias</Link>
           </li>
           <li style={styles.li}>
-            <Link href="/admin/mutiroes" style={styles.link}>Mutirões</Link>
+            <Link href="/admin/multiroes" style={styles.link}>Mutirões</Link>
           </li>
           <li style={styles.li}>
             <Link href="/projetos" style={styles.link}>Projetos</Link>
