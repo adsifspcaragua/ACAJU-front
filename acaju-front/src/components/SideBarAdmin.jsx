@@ -7,7 +7,7 @@ export default function SideBarAdmin() {
       <h2 style={styles.titulo}>Painel ACAJU</h2>
       <nav style={styles.nav}>
         
-        {/* Menu Principal */}
+
         <ul style={styles.ul}>
           <li style={styles.li}>
             <Link href="/pendencias" style={styles.link}>
@@ -19,14 +19,14 @@ export default function SideBarAdmin() {
           </li>
         </ul>
 
-        {/* Seção PUBLICAÇÕES */}
+        
         <h4 style={styles.h4}>PUBLICAÇÕES</h4>
         <ul style={styles.ul}>
           <li style={styles.li}>
             <Link href="/noticias" style={styles.link}>Notícias</Link>
           </li>
           <li style={styles.li}>
-            <Link href="/eventos" style={styles.link}>Eventos</Link>
+            <Link href="/admin/mutiroes" style={styles.link}>Mutirões</Link>
           </li>
           <li style={styles.li}>
             <Link href="/projetos" style={styles.link}>Projetos</Link>
@@ -40,12 +40,9 @@ export default function SideBarAdmin() {
           <li style={styles.li}>
             <Link href="/documentos" style={styles.link}>Documentos</Link>
           </li>
-          <li style={styles.li}>
-            <Link href="/museu" style={styles.link}>Museu</Link>
-          </li>
         </ul>
 
-        {/* Seção USUÁRIOS */}
+       
         <h4 style={styles.h4}>USUÁRIOS</h4>
         <ul style={styles.ul}>
           <li style={styles.li}>
@@ -53,7 +50,7 @@ export default function SideBarAdmin() {
           </li>
         </ul>
 
-        {/* Botão Sair */}
+       
         <ul style={styles.logoutUl}>
           <li style={styles.li}>
             <Link href="/logout" style={styles.logoutLink}>Sair do sistema</Link>
@@ -99,7 +96,7 @@ const styles = {
   logoutUl: {
     listStyle: "none",
     padding: 0,
-    margin: "auto 0 0 0", // Mantém o botão de sair lá embaixo
+    margin: "auto 0 0 0", 
   },
   h4: {
     color: "#4ade80",
