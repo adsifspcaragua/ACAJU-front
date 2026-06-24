@@ -98,8 +98,6 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    backgroundColor: "#199a8a",
-    backgroundImage: "linear-gradient(135deg, #0e4409 0%, #199a8a 100%)",
     margin: 0,
   },
   mainContent: {
@@ -238,7 +236,7 @@ const styles = {
     color: "#ffffff",
     border: "none",
     borderRadius: "8px",
-    padding: "11px 36px",
+    padding: "14px 36px",
     fontSize: "14px",
     fontWeight: "bold",
     cursor: "pointer",
