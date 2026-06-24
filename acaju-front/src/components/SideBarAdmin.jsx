@@ -52,7 +52,7 @@ export default function SideBarAdmin() {
        
         <ul style={styles.logoutUl}>
           <li style={styles.li}>
-            <Link href="/logout" style={styles.logoutLink}>Sair do sistema</Link>
+            <Link href="/admin/login" style={styles.logoutLink}>Sair do sistema</Link>
           </li>
         </ul>
 
@@ -65,7 +65,7 @@ export default function SideBarAdmin() {
 const styles = {
   sideBar: {
     backgroundColor: "#045950",
-    width: "260px",
+    width: "300px",
     minHeight: "100vh",
     padding: "30px 20px",
     display: "flex",
