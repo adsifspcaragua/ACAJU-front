@@ -1,13 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
+import UploadDropZone from "@rpldy/upload-drop-zone"; 
 import SideBarAdmin from "../../../components/SideBarAdmin";
-import '@/app/admin/page.admin.css';
 
 export default function GerenciarProjetos() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
+  
+  const dropzoneRef = useRef(null);
+
+  const handleDropzoneClick = () => {
+    if (dropzoneRef.current) {
+      const hiddenInput = dropzoneRef.current.querySelector("input[type='file']");
+      if (hiddenInput) hiddenInput.click();
+    }
+  };
 
   return (
     <div style={styles.container}>
@@ -33,6 +42,7 @@ export default function GerenciarProjetos() {
             />
           </div>
 
+          {/* Objetivo */}
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>OBJETIVO</label>
             <textarea 
@@ -72,13 +82,17 @@ export default function GerenciarProjetos() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>FOTOS DO PROJETO</label>
-            <div style={styles.dropzone}>
-              <span style={{fontSize: "24px"}}>📸</span>
-              <p style={styles.dropzoneText}>
-                <strong>CLIQUE PARA SELECIONAR FOTOS DO PROJETO</strong><br/>
-                OU ARRASTE OS FICHEIROS PARA CÁ
-              </p>
-            </div>
+            <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+              <div ref={dropzoneRef} onClick={handleDropzoneClick}>
+                <UploadDropZone style={styles.dropzone}>
+                  <span style={{fontSize: "28px"}}>📸</span>
+                  <p style={styles.dropzoneText}>
+                    <strong>CLIQUE PARA SELECIONAR FOTOS DO PROJETO</strong><br/>
+                    OU ARRASTE OS FICHEIROS PARA CÁ
+                  </p>
+                </UploadDropZone>
+              </div>
+            </Uploady>
           </div>
 
           <div style={styles.switchContainer}>
@@ -228,14 +242,15 @@ const styles = {
     boxSizing: "border-box",
     backgroundColor: "#ffffff",
   },
+  uploadButton: {},
   uploadText: {
     color: "#9ca3af",
     fontSize: "14px",
   },
   dropzone: {
     width: "100%",
-    height: "150px",
-    border: "2px dashed #d1d5db",
+    height: "160px",
+    border: "2px dashed #b3bfc8",
     borderRadius: "12px",
     display: "flex",
     flexDirection: "column",
@@ -244,13 +259,15 @@ const styles = {
     backgroundColor: "#f9fafb",
     cursor: "pointer",
     textAlign: "center",
-    gap: "10px",
+    gap: "12px",
+    transition: "all 0.2s ease-in-out",
   },
   dropzoneText: {
     fontSize: "13px",
-    color: "#374151",
+    color: "#475569",
     margin: 0,
-    lineHeight: "1.5",
+    lineHeight: "1.6",
+    letterSpacing: "0.3px",
   },
   switchContainer: {
     display: "flex",
