@@ -64,6 +64,7 @@ div > button {
   align-items: center !important;
   justify-content: center !important;
   transition: background-color 0.2s ease !important;
+  width: 150px !important;
 }
 
 div[style*="display: flex"][style*="align-items: center"] button:hover,

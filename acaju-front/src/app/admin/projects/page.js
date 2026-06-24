@@ -42,7 +42,6 @@ export default function GerenciarProjetos() {
             />
           </div>
 
-          {/* Objetivo */}
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>OBJETIVO</label>
             <textarea 
@@ -112,7 +111,7 @@ export default function GerenciarProjetos() {
           </div>
 
           <button type="submit" style={styles.submitButton}>
-            Registrar Projeto
+            Publicar
           </button>
 
         </form>
@@ -125,8 +124,6 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    backgroundColor: "#199a8a",
-    backgroundImage: "linear-gradient(135deg, #0e4409 0%, #199a8a 100%)",
     margin: 0,
   },
   mainContent: {
