@@ -1,29 +1,19 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
-import UploadDropZone from "@rpldy/upload-drop-zone"; 
 import SideBarAdmin from "../../../components/SideBarAdmin";
+import '@/app/admin/page.admin.css';
 
 export default function GerenciarProjetos() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
-  
-  const dropzoneRef = useRef(null);
-
-  const handleDropzoneClick = () => {
-    if (dropzoneRef.current) {
-      const hiddenInput = dropzoneRef.current.querySelector("input[type='file']");
-      if (hiddenInput) hiddenInput.click();
-    }
-  };
 
   return (
     <div style={styles.container}>
       <SideBarAdmin />
 
       <main style={styles.mainContent}>
-
         <div style={styles.headerContainer}>
           <div style={styles.header}>
             <h1 style={styles.pageTitle}>Gerenciar Projeto</h1>
@@ -32,7 +22,7 @@ export default function GerenciarProjetos() {
         </div>
 
         <form style={styles.card} onSubmit={(e) => e.preventDefault()}>
-          
+
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>TÍTULO DO PROJETO</label>
             <input 
@@ -81,37 +71,33 @@ export default function GerenciarProjetos() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>FOTOS DO PROJETO</label>
-            <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-              <div ref={dropzoneRef} onClick={handleDropzoneClick}>
-                <UploadDropZone style={styles.dropzone}>
-                  <span style={{fontSize: "28px"}}>📸</span>
-                  <p style={styles.dropzoneText}>
+            <div style={styles.dropzone}>
+                <span style={{fontSize: "24px"}}>📸</span>
+                <p style={styles.dropzoneText}>
                     <strong>CLIQUE PARA SELECIONAR FOTOS DO PROJETO</strong><br/>
                     OU ARRASTE OS FICHEIROS PARA CÁ
-                  </p>
-                </UploadDropZone>
-              </div>
-            </Uploady>
+                </p>
+            </div>
           </div>
 
           <div style={styles.switchContainer}>
             <div 
-              onClick={() => setSolicitarAnalise(!solicitarAnalise)}
-              style={{
-                ...styles.switchTrack,
-                backgroundColor: solicitarAnalise ? "#085747" : "#e5e7eb"
-              }}
+                onClick={() => setSolicitarAnalise(!solicitarAnalise)}
+                style={{
+                    ...styles.switchTrack,
+                    backgroundColor: solicitarAnalise ? "#085747" : "#e5e7eb"
+                }}
             >
-              <div style={{
-                ...styles.switchThumb,
-                transform: solicitarAnalise ? "translateX(20px)" : "translateX(0px)"
-              }} />
+                <div style={{
+                    ...styles.switchThumb,
+                    transform: solicitarAnalise ? "translateX(20px)" : "translateX(0px)"
+                }} />
             </div>
             <span style={styles.switchLabel}>Solicitar análise para aprovação</span>
           </div>
 
           <button type="submit" style={styles.submitButton}>
-            Publicar
+            Registrar Projeto
           </button>
 
         </form>
@@ -124,6 +110,8 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
+    backgroundColor: "#199a8a",
+    backgroundImage: "linear-gradient(135deg, #0e4409 0%, #199a8a 100%)",
     margin: 0,
   },
   mainContent: {
@@ -239,15 +227,14 @@ const styles = {
     boxSizing: "border-box",
     backgroundColor: "#ffffff",
   },
-  uploadButton: {},
   uploadText: {
     color: "#9ca3af",
     fontSize: "14px",
   },
   dropzone: {
     width: "100%",
-    height: "160px",
-    border: "2px dashed #b3bfc8",
+    height: "150px",
+    border: "2px dashed #d1d5db",
     borderRadius: "12px",
     display: "flex",
     flexDirection: "column",
@@ -256,15 +243,13 @@ const styles = {
     backgroundColor: "#f9fafb",
     cursor: "pointer",
     textAlign: "center",
-    gap: "12px",
-    transition: "all 0.2s ease-in-out",
+    gap: "10px",
   },
   dropzoneText: {
     fontSize: "13px",
-    color: "#475569",
+    color: "#374151",
     margin: 0,
-    lineHeight: "1.6",
-    letterSpacing: "0.3px",
+    lineHeight: "1.5",
   },
   switchContainer: {
     display: "flex",
@@ -299,8 +284,8 @@ const styles = {
     color: "#ffffff",
     border: "none",
     borderRadius: "8px",
-    padding: "12px 34px",
-    fontSize: "14px",
+    padding: "16px 36px",
+    fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
     alignSelf: "flex-start",
