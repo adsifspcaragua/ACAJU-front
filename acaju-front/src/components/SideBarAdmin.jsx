@@ -14,7 +14,7 @@ export default function SideBarAdmin() {
             </Link>
           </li>
           <li style={styles.li}>
-            <Link href="/horario" style={styles.link}>Horário de funcionamento</Link>
+            <Link href="/admin/openingHours" style={styles.link}>Horário de funcionamento</Link>
           </li>
         </ul>
 
@@ -45,7 +45,7 @@ export default function SideBarAdmin() {
         <h4 style={styles.h4}>USUÁRIOS</h4>
         <ul style={styles.ul}>
           <li style={styles.li}>
-            <Link href="/equipe" style={styles.link}>Gerenciar Equipe</Link>
+            <Link href="/admin/teamManage" style={styles.link}>Gerenciar Equipe</Link>
           </li>
         </ul>
 
