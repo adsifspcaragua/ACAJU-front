@@ -1,0 +1,1 @@
+/// Essa pasta serve para guardar arquivos como img, pdf etc, e fontes.

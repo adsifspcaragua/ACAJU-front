@@ -1,4 +1,4 @@
-import LoginModal from '@/components/Login-modal.jsx';
+import LoginModal from '@/components/login-modal.jsx';
 import '@/app/admin/page.admin.css';
 
 export default function Login() {
