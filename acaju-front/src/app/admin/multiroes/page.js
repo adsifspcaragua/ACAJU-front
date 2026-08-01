@@ -52,7 +52,7 @@ export default function GerenciarMultiroes() {
               <label style={styles.label}>HORÁRIO</label>
               <input 
                 type="time" 
-                defaultValue="08:00" 
+                defaultValue="07:00" 
                 style={styles.input} 
               />
             </div>
