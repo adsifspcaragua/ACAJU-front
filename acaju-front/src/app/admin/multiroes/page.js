@@ -49,6 +49,15 @@ export default function GerenciarMultiroes() {
 
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
+              <label style={styles.label}>HORÁRIO</label>
+              <input 
+                type="time" 
+                defaultValue="08:00" 
+                style={styles.input} 
+              />
+            </div>
+
+            <div style={styles.inputGroupHalf}>
               <label style={styles.label}>LOCAL</label>
               <input 
                 type="text" 
@@ -56,16 +65,16 @@ export default function GerenciarMultiroes() {
                 style={styles.input}
               />
             </div>
+          </div>
 
-            <div style={styles.inputGroupHalf}>
-              <label style={styles.label}>AMBIENTE DO LOCAL</label>
-              <select style={styles.select}>
-                <option value="">Selecione uma opção...</option>
-                <option value="praia">Praia</option>
-                <option value="rio">Rio</option>
-                <option value="urbano">Urbano</option>
-              </select>
-            </div>
+          <div style={styles.inputGroupFull}>
+            <label style={styles.label}>AMBIENTE DO LOCAL</label>
+            <select style={styles.select}>
+              <option value="">Selecione uma opção...</option>
+              <option value="praia">Praia</option>
+              <option value="rio">Rio</option>
+              <option value="urbano">Urbano</option>
+            </select>
           </div>
 
           <div style={styles.inputGroupFull}>
