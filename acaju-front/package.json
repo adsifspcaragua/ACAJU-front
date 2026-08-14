@@ -10,16 +10,20 @@
     "format": "biome format --write ."
   },
   "dependencies": {
+    "@prisma/adapter-mariadb": "^7.9.1",
+    "@prisma/client": "^7.9.1",
     "@rpldy/upload-button": "^1.13.0",
     "@rpldy/upload-drop-zone": "^1.13.0",
     "@rpldy/uploader": "^1.13.0",
     "@rpldy/uploady": "^1.13.0",
+    "dotenv": "^17.4.2",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
-    "babel-plugin-react-compiler": "1.0.0"
+    "babel-plugin-react-compiler": "1.0.0",
+    "prisma": "^7.9.1"
   }
 }

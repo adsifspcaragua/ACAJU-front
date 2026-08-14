@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model ADM {
+  id        String   @id @default(uuid())
+  name      String   @db.VarChar(255)
+  email     String   @unique @db.VarChar(255)
+  pass      String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  admlog    ADMLOG[]
+  news      News[]
+  mutirao   Mutirao[]
+  documents Document[]
+}
+
+model ADMLOG {
+  id        String   @id @default(uuid())
+  loginAt   DateTime @default(now())
+  ipAddress String?
+  userAgent String?
+
+  adminId String
+  ADM     ADM    @relation(fields: [adminId], references: [id], onDelete: Cascade)
+}
+
+enum Status {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum MutiraoType {
+  LIMPEZA 
+  PLANTIO 
+  OUTRO   
+}
+
+enum Environment {
+  PRAIA   
+  RIO      
+  MANGUE   
+  RESTINGA 
+  URBANO   
+}
+
+
+// (Tela Horário de Funcionamento)
+
+
+enum VisitStatus {
+  ABERTO      
+  FECHADO     
+  MANUTENCAO  
+}
+
+// Modelo da Tabela de Horário de Funcionamento
+model OperatingHours {
+  id              String      @id @default(uuid())
+  currentStatus   VisitStatus @default(ABERTO) 
+  openingTime     String      
+  closingTime     String      
+  additionalNotes String?     @db.Text
+  updatedAt       DateTime    @updatedAt
+}
+// 4. PUBLICAÇÕES 
+
+model News {
+  id         String  @id @default(uuid())
+  title      String
+  content    String  @db.Text
+  coverImage String?
+  videoUrl   String?
+  status     Status  @default(PENDING)
+
+  adminId String
+  ADM     ADM    @relation(fields: [adminId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  galleryImages Json?
+}
+
+// MULTIRÔES
+
+model Mutirao {
+  id          String      @id @default(uuid())
+  name        String     
+  type        MutiraoType 
+  date        DateTime    
+  time        String
+  location    String
+  environment Environment 
+  coverImage  String?
+  description String      @db.Text
+  createdAt   DateTime    @default(now())
+
+  adminId String
+  ADM     ADM    @relation(fields: [adminId], references: [id])
+
+}
+
+//model Project {
+//  id            String   @id @default(uuid())
+//  title         String
+//  objective     String   @db.Text
+//  bodyContent   String   @db.Text
+//  coverImage    String?
+//  videoUrl      String?
+//  createdAt     DateTime @default(now())
+//  galleryImages Json?
+//}
+
+// model Memory {
+//  id            String   @id @default(uuid())
+//  title         String // Título / Figura Homenageada
+//  content       String   @db.Text
+//  coverImage    String?
+//  videoUrl      String?
+//  createdAt     DateTime @default(now())
+//  galleryImages Json?
+//} 
+
+model Document {
+  id          String   @id @default(uuid())
+  name        String 
+  description String   @db.Text
+  fileUrl     String // URL do PDF upado
+  createdAt   DateTime @default(now())
+
+  adminId String
+  ADM     ADM    @relation(fields: [adminId], references: [id])
+}
+
+// 6. GALERIA GLOBAL (Tela Galeria de Fotos)
+
+model GalleryImage {
+  id            String   @id @default(uuid())
+  imageUrl      String
+  createdAt     DateTime @default(now())
+  galleryImages Json?
+}

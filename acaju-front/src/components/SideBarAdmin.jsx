@@ -34,7 +34,7 @@ export default function SideBarAdmin() {
             <Link href="/admin/memorias" style={styles.link}>Memórias Caiçaras</Link>
           </li>
           <li style={styles.li}>
-            <Link href="/galeria" style={styles.link}>Galeria de Fotos</Link>
+            <Link href="/admin/galeria" style={styles.link}>Galeria de Fotos</Link>
           </li>
           <li style={styles.li}>
             <Link href="/admin/documents" style={styles.link}>Documentos</Link>
