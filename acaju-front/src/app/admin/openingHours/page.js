@@ -62,7 +62,7 @@ export default function HorarioFuncionamento() {
             />
           </div>
 
-          <button type="submit" style={styles.submitButton}>Salvar Alterações</button>
+          <button type="submit" style={styles.submitButton}>Salvar</button>
 
         </form>
       </main>
