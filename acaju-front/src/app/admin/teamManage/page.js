@@ -79,8 +79,6 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    backgroundColor: "#199a8a",
-    backgroundImage: "linear-gradient(135deg, #0e4409 0%, #199a8a 100%)",
     margin: 0,
   },
   mainContent: {
@@ -143,6 +141,7 @@ const styles = {
   },
   row: {
     display: "flex",
+    flexDirection: "column",
     gap: "28px",
     width: "100%",
     boxSizing: "border-box",

@@ -240,7 +240,7 @@ const styles = {
     fontSize: "14px",
     fontWeight: "bold",
     cursor: "pointer",
-    alignSelf: "flex-start",
+    alignSelf: "center",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
     fontFamily: "inherit",
   },

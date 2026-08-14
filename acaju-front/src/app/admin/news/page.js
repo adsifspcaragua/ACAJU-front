@@ -97,7 +97,7 @@ export default function PublicarNoticia() {
             <span style={styles.switchLabel}>Solicitar análise para aprovação</span>
           </div>
 
-          <button type="submit" style={styles.submitButton}>Publicar Notícia</button>
+          <button type="submit" style={styles.submitButton}>Publicar</button>
 
         </form>
       </main>
@@ -286,7 +286,7 @@ const styles = {
     fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
-    alignSelf: "flex-start",
+    alignSelf: "center",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
     fontFamily: "inherit",
   },

@@ -97,7 +97,7 @@ export default function GerenciarProjetos() {
           </div>
 
           <button type="submit" style={styles.submitButton}>
-            Registrar Projeto
+            Publicar
           </button>
 
         </form>
@@ -269,6 +269,7 @@ const styles = {
     height: "20px",
     backgroundColor: "#ffffff",
     borderRadius: "50%",
+    alignSelf: "center",
     transition: "transform 0.2s",
     boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
   },
@@ -276,6 +277,7 @@ const styles = {
     fontSize: "14px",
     color: "#374151",
     fontWeight: "500",
+    alignSelf: "center",
   },
   submitButton: {
     backgroundColor: "#085747",
@@ -286,7 +288,7 @@ const styles = {
     fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
-    alignSelf: "flex-start",
+    alignSelf: "center",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
     fontFamily: "inherit",
   },
