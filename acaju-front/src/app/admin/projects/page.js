@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
@@ -8,6 +8,12 @@ import '@/app/admin/page.admin.css';
 
 export default function GerenciarProjetos() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
+  // Estado para garantir que o código só rode no lado do cliente (browser)
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <div style={styles.container}>
@@ -51,12 +57,16 @@ export default function GerenciarProjetos() {
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>IMAGEM DE CAPA</label>
-              <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-                <div style={styles.uploadContainer}>
-                  <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                  <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
-                </div>
-              </Uploady>
+
+              {/* Renderização condicional para evitar Hydration Mismatch */}
+              {isMounted && (
+                <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+                  <div style={styles.uploadContainer}>
+                    <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
+                    <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+                  </div>
+                </Uploady>
+              )}
             </div>
 
             <div style={styles.inputGroupHalf}>
@@ -228,6 +238,13 @@ const styles = {
   uploadText: {
     color: "#9ca3af",
     fontSize: "14px",
+  },
+  uploadButton: {
+    background: "none",
+    border: "none",
+    color: "#085747",
+    fontWeight: "bold",
+    cursor: "pointer",
   },
   dropzone: {
     width: "100%",
