@@ -36,7 +36,6 @@ export default function GaleriaDeFotos() {
             </label>
           </Uploady>
 
-          {/* Placeholder de "Sem imagens" alinhado à esquerda como na imagem */}
           <div style={styles.imagePlaceholder}>
             <span style={styles.placeholderText}>Sem imagens</span>
           </div>
@@ -55,8 +54,7 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    margin: 0,
-    background: "linear-gradient(135deg, #3bb399 0%, #175d52 100%)", 
+    margin: 0
   },
   mainContent: {
     flexGrow: 1,
