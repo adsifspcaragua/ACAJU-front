@@ -40,14 +40,16 @@ export default function SideBarAdmin() {
             <Link href="/admin/documents" style={styles.link}>Documentos</Link>
           </li>
         </ul>
-
        
         <h4 style={styles.h4}>USUÁRIOS</h4>
         <ul style={styles.ul}>
           <li style={styles.li}>
+            <Link href="/admin/userManage" style={styles.link}>Gerenciar Usuário</Link>
+          </li>
+          <li style={styles.li}>
             <Link href="/admin/teamManage" style={styles.link}>Gerenciar Equipe</Link>
           </li>
-        </ul>
+        </ul> 
 
        
         <ul style={styles.logoutUl}>
