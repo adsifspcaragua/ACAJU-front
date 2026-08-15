@@ -1,11 +1,11 @@
 "use client";
 
+import React from "react";
 import Uploady from "@rpldy/uploady";
-import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
 
-export default function RepositorioDocumentos() {
+export default function GaleriaDeFotos() {
   return (
     <div style={styles.container}>
       <SideBarAdmin />
@@ -14,43 +14,43 @@ export default function RepositorioDocumentos() {
 
         <div style={styles.headerContainer}>
           <div style={styles.header}>
-            <h1 style={styles.pageTitle}>Repositório de Documentos</h1>
+            <h1 style={styles.pageTitle}>Galeria de Fotos</h1>
             <div style={styles.welcomeBadge}>BEM-VINDO, ADMINISTRADOR</div>
           </div>
         </div>
 
-        <form style={styles.card} onSubmit={(e) => e.preventDefault()}>
+        <div style={styles.card}>
           
-          <div style={styles.inputGroupFull}>
-            <label style={styles.label}>NOME DO DOCUMENTO</label>
-            <input 
-              type="text" 
-              placeholder="Ex: Estatuto da Associação 2026" 
-              style={styles.input}
-            />
+          <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+            <label style={styles.dropzone}>
+              <input 
+                type="file" 
+                multiple 
+                style={{ display: "none" }} 
+              />
+              <span style={{fontSize: "24px"}}>📸</span>
+              <p style={styles.dropzoneText}>
+                <strong>CLIQUE PARA SELECIONAR FOTOS</strong><br/>
+                OU ARRASTE OS FICHEIROS PARA CÁ
+              </p>
+            </label>
+          </Uploady>
+
+          {/* Placeholder de "Sem imagens" alinhado à esquerda como na imagem */}
+          <div style={styles.imagePlaceholder}>
+            <span style={styles.placeholderText}>Sem imagens</span>
           </div>
 
           <div style={styles.inputGroupFull}>
-            <label style={styles.label}>DESCRIÇÃO DO DOCUMENTO</label>
-            <textarea 
-              placeholder="Escreva um breve resumo sobre o que trata este documento..." 
-              style={styles.textarea}
-            />
+            <label style={styles.label}>DESCRIÇÃO</label>
+            <textarea style={styles.textarea} />
           </div>
 
-          <div style={styles.inputGroupFull}>
-            <label style={styles.label}>FICHEIRO (PDF)</label>
-            <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-              <div style={styles.uploadContainer}>
-                <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
-              </div>
-            </Uploady>
-          </div>
+          <button type="button" style={styles.submitButton}>
+            Publicar
+          </button>
 
-          <button type="submit" style={styles.submitButton}>Publicar</button>
-
-        </form>
+        </div>
       </main>
     </div>
   );
@@ -61,6 +61,7 @@ const styles = {
     display: "flex",
     minHeight: "100vh",
     margin: 0,
+    background: "linear-gradient(135deg, #3bb399 0%, #175d52 100%)", 
   },
   mainContent: {
     flexGrow: 1,
@@ -72,7 +73,7 @@ const styles = {
   },
   headerContainer: {
     width: "100%",
-    maxWidth: "950px",
+    maxWidth: "950px", 
     borderBottom: "1px solid rgba(255, 255, 255, 0.25)",
     marginBottom: "40px",
     paddingBottom: "15px",
@@ -87,7 +88,7 @@ const styles = {
   },
   pageTitle: {
     color: "#ffffff",
-    fontSize: "36px",
+    fontSize: "36px", 
     fontWeight: "bold",
     margin: 0,
   },
@@ -109,8 +110,42 @@ const styles = {
     flexDirection: "column",
     gap: "28px",
     width: "100%",
-    maxWidth: "950px",
+    maxWidth: "950px", 
     boxSizing: "border-box",
+  },
+  dropzone: {
+    width: "100%",
+    height: "150px",
+    border: "2px dashed #d1d5db",
+    borderRadius: "12px",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f9fafb",
+    cursor: "pointer",
+    textAlign: "center",
+    gap: "10px",
+  },
+  dropzoneText: {
+    fontSize: "13px",
+    color: "#374151",
+    margin: 0,
+    lineHeight: "1.5",
+  },
+  imagePlaceholder: {
+    width: "200px",
+    height: "200px",
+    border: "1px solid #d1d5db",
+    borderRadius: "8px",
+    backgroundColor: "#f9fafb",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  placeholderText: {
+    color: "#9ca3af",
+    fontSize: "13px",
   },
   inputGroupFull: {
     display: "flex",
@@ -124,47 +159,19 @@ const styles = {
     fontSize: "13px",
     fontWeight: "bold",
     letterSpacing: "0.5px",
-  },
-  input: {
-    width: "100%",
-    height: "52px",
-    padding: "14px",
-    border: "1px solid #d1d5db",
-    borderRadius: "8px",
-    fontSize: "15px",
-    color: "#374151",
-    boxSizing: "border-box",
-    outline: "none",
-    fontFamily: "inherit",
+    textTransform: "uppercase",
   },
   textarea: {
     width: "100%",
-    height: "150px",
+    minHeight: "100px",
     padding: "14px",
     border: "1px solid #d1d5db",
     borderRadius: "8px",
     fontSize: "15px",
     color: "#374151",
     boxSizing: "border-box",
-    resize: "none",
+    resize: "vertical",
     outline: "none",
-    fontFamily: "inherit",
-  },
-  uploadContainer: {
-    display: "flex",
-    alignItems: "center",
-    gap: "14px",
-    width: "100%",
-    height: "52px",
-    padding: "0 14px",
-    border: "1px solid #d1d5db",
-    borderRadius: "8px",
-    boxSizing: "border-box",
-    backgroundColor: "#ffffff",
-  },
-  uploadText: {
-    color: "#9ca3af",
-    fontSize: "14px",
     fontFamily: "inherit",
   },
   submitButton: {
@@ -172,7 +179,7 @@ const styles = {
     color: "#ffffff",
     border: "none",
     borderRadius: "8px",
-    padding: "11px 36px",
+    padding: "12px 34px",
     fontSize: "14px",
     fontWeight: "bold",
     cursor: "pointer",

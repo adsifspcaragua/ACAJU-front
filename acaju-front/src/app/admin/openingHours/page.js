@@ -62,7 +62,7 @@ export default function HorarioFuncionamento() {
             />
           </div>
 
-          <button type="submit" style={styles.submitButton}>Salvar Alterações</button>
+          <button type="submit" style={styles.submitButton}>Salvar</button>
 
         </form>
       </main>
@@ -74,8 +74,6 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    backgroundColor: "#199a8a",
-    backgroundImage: "linear-gradient(135deg, #0e4409 0%, #199a8a 100%)",
     margin: 0,
   },
   mainContent: {
@@ -118,7 +116,7 @@ const styles = {
   },
   card: {
     backgroundColor: "#ffffff",
-    borderRadius: "20px",
+    borderRadius: "10px",
     padding: "50px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
     display: "flex",
@@ -202,7 +200,7 @@ const styles = {
     fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
-    alignSelf: "flex-start",
+    alignSelf: "center",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
     fontFamily: "inherit",
   },

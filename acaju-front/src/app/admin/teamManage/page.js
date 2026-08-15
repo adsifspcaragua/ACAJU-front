@@ -79,8 +79,6 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    backgroundColor: "#199a8a",
-    backgroundImage: "linear-gradient(135deg, #0e4409 0%, #199a8a 100%)",
     margin: 0,
   },
   mainContent: {
@@ -123,7 +121,7 @@ const styles = {
   },
   card: {
     backgroundColor: "#ffffff",
-    borderRadius: "20px",
+    borderRadius: "10px",
     padding: "50px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
     display: "flex",
@@ -138,11 +136,13 @@ const styles = {
     color: "#0c3110",
     fontSize: "18px",
     fontWeight: "bold",
+    alignSelf: "center",
     letterSpacing: "0.5px",
     textTransform: "uppercase",
   },
   row: {
     display: "flex",
+    flexDirection: "column",
     gap: "28px",
     width: "100%",
     boxSizing: "border-box",

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
@@ -8,6 +8,11 @@ import '@/app/admin/page.admin.css';
 
 export default function GerenciarProjetos() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <div style={styles.container}>
@@ -51,12 +56,15 @@ export default function GerenciarProjetos() {
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>IMAGEM DE CAPA</label>
-              <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-                <div style={styles.uploadContainer}>
-                  <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                  <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
-                </div>
-              </Uploady>
+
+              {isMounted && (
+                <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+                  <div style={styles.uploadContainer}>
+                    <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
+                    <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+                  </div>
+                </Uploady>
+              )}
             </div>
 
             <div style={styles.inputGroupHalf}>
@@ -97,7 +105,7 @@ export default function GerenciarProjetos() {
           </div>
 
           <button type="submit" style={styles.submitButton}>
-            Registrar Projeto
+            Publicar
           </button>
 
         </form>
@@ -152,7 +160,7 @@ const styles = {
   },
   card: {
     backgroundColor: "#ffffff",
-    borderRadius: "20px",
+    borderRadius: "10px",
     padding: "50px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
     display: "flex",
@@ -229,6 +237,13 @@ const styles = {
     color: "#9ca3af",
     fontSize: "14px",
   },
+  uploadButton: {
+    background: "none",
+    border: "none",
+    color: "#085747",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
   dropzone: {
     width: "100%",
     height: "150px",
@@ -269,6 +284,7 @@ const styles = {
     height: "20px",
     backgroundColor: "#ffffff",
     borderRadius: "50%",
+    alignSelf: "center",
     transition: "transform 0.2s",
     boxShadow: "0 2px 4px rgba(0,0,0,0.2)",
   },
@@ -276,6 +292,7 @@ const styles = {
     fontSize: "14px",
     color: "#374151",
     fontWeight: "500",
+    alignSelf: "center",
   },
   submitButton: {
     backgroundColor: "#085747",
@@ -286,7 +303,7 @@ const styles = {
     fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
-    alignSelf: "flex-start",
+    alignSelf: "center",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
     fontFamily: "inherit",
   },

@@ -9,7 +9,7 @@ export default function SideBarAdmin() {
 
         <ul style={styles.ul}>
           <li style={styles.li}>
-            <Link href="/pendencias" style={styles.link}>
+            <Link href="/admin/pendencias" style={styles.link}>
               <span>Pendências</span>
             </Link>
           </li>
@@ -34,20 +34,22 @@ export default function SideBarAdmin() {
             <Link href="/admin/memorias" style={styles.link}>Memórias Caiçaras</Link>
           </li>
           <li style={styles.li}>
-            <Link href="/galeria" style={styles.link}>Galeria de Fotos</Link>
+            <Link href="/admin/galeria" style={styles.link}>Galeria de Fotos</Link>
           </li>
           <li style={styles.li}>
             <Link href="/admin/documents" style={styles.link}>Documentos</Link>
           </li>
         </ul>
-
        
         <h4 style={styles.h4}>USUÁRIOS</h4>
         <ul style={styles.ul}>
           <li style={styles.li}>
+            <Link href="/admin/userManage" style={styles.link}>Gerenciar Usuário</Link>
+          </li>
+          <li style={styles.li}>
             <Link href="/admin/teamManage" style={styles.link}>Gerenciar Equipe</Link>
           </li>
-        </ul>
+        </ul> 
 
        
         <ul style={styles.logoutUl}>
