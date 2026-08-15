@@ -8,7 +8,6 @@ import '@/app/admin/page.admin.css';
 
 export default function GerenciarProjetos() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
-  // Estado para garantir que o código só rode no lado do cliente (browser)
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -58,7 +57,6 @@ export default function GerenciarProjetos() {
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>IMAGEM DE CAPA</label>
 
-              {/* Renderização condicional para evitar Hydration Mismatch */}
               {isMounted && (
                 <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
                   <div style={styles.uploadContainer}>
@@ -162,7 +160,7 @@ const styles = {
   },
   card: {
     backgroundColor: "#ffffff",
-    borderRadius: "20px",
+    borderRadius: "10px",
     padding: "50px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
     display: "flex",

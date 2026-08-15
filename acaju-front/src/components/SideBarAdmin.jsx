@@ -9,7 +9,7 @@ export default function SideBarAdmin() {
 
         <ul style={styles.ul}>
           <li style={styles.li}>
-            <Link href="/pendencias" style={styles.link}>
+            <Link href="/admin/pendencias" style={styles.link}>
               <span>Pendências</span>
             </Link>
           </li>

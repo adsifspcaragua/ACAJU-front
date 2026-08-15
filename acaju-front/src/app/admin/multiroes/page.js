@@ -73,6 +73,8 @@ export default function GerenciarMultiroes() {
               <option value="">Selecione uma opção...</option>
               <option value="praia">Praia</option>
               <option value="rio">Rio</option>
+              <option value="mangue">Mangue</option>
+              <option value="restinga">Restinga</option>
               <option value="urbano">Urbano</option>
             </select>
           </div>
@@ -149,7 +151,7 @@ const styles = {
   },
   card: {
     backgroundColor: "#ffffff",
-    borderRadius: "20px",
+    borderRadius: "10px",
     padding: "50px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
     display: "flex",
