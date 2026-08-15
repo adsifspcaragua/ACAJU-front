@@ -36,8 +36,14 @@ export default function GaleriaDeFotos() {
             </label>
           </Uploady>
 
+          {/* Placeholder de "Sem imagens" alinhado à esquerda como na imagem */}
           <div style={styles.imagePlaceholder}>
             <span style={styles.placeholderText}>Sem imagens</span>
+          </div>
+
+          <div style={styles.inputGroupFull}>
+            <label style={styles.label}>DESCRIÇÃO</label>
+            <textarea style={styles.textarea} />
           </div>
 
           <button type="button" style={styles.submitButton}>
@@ -54,7 +60,8 @@ const styles = {
   container: {
     display: "flex",
     minHeight: "100vh",
-    margin: 0
+    margin: 0,
+    background: "linear-gradient(135deg, #3bb399 0%, #175d52 100%)", 
   },
   mainContent: {
     flexGrow: 1,
@@ -140,6 +147,33 @@ const styles = {
     color: "#9ca3af",
     fontSize: "13px",
   },
+  inputGroupFull: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "10px",
+    width: "100%",
+    boxSizing: "border-box",
+  },
+  label: {
+    color: "#0c3110",
+    fontSize: "13px",
+    fontWeight: "bold",
+    letterSpacing: "0.5px",
+    textTransform: "uppercase",
+  },
+  textarea: {
+    width: "100%",
+    minHeight: "100px",
+    padding: "14px",
+    border: "1px solid #d1d5db",
+    borderRadius: "8px",
+    fontSize: "15px",
+    color: "#374151",
+    boxSizing: "border-box",
+    resize: "vertical",
+    outline: "none",
+    fontFamily: "inherit",
+  },
   submitButton: {
     backgroundColor: "#085747",
     color: "#ffffff",
@@ -149,7 +183,7 @@ const styles = {
     fontSize: "14px",
     fontWeight: "bold",
     cursor: "pointer",
-    alignSelf: "center", // Alterado de flex-start para center
+    alignSelf: "center",
     boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
     fontFamily: "inherit",
   },
