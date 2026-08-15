@@ -121,7 +121,7 @@ const styles = {
   },
   card: {
     backgroundColor: "#ffffff",
-    borderRadius: "20px",
+    borderRadius: "10px",
     padding: "50px",
     boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
     display: "flex",
@@ -136,6 +136,7 @@ const styles = {
     color: "#0c3110",
     fontSize: "18px",
     fontWeight: "bold",
+    alignSelf: "center",
     letterSpacing: "0.5px",
     textTransform: "uppercase",
   },
