@@ -1,60 +1,122 @@
 import Link from 'next/link';
+import styles from './SideBarAdmin.module.css';
+import { 
+  ClipboardCheck, 
+  Clock, 
+  FileText, 
+  Users, 
+  FolderKanban, 
+  Image, 
+  FileDown, 
+  UserCog, 
+  UsersRound,
+  LogOut 
+} from 'lucide-react';
 
 export default function SideBarAdmin() {
   return (
-    <div style={styles.sideBar}>
-      <h2 style={styles.titulo}>Painel ACAJU</h2>
-      <nav style={styles.nav}>
-        
+    <div className={styles.sideBar}>
+      <h2 className={styles.titulo}>Painel ACAJU</h2>
+      <nav className={styles.nav}>
 
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            <Link href="/admin/pendencias" style={styles.link}>
-              <span>Pendências</span>
+        <ul className={styles.ul}>
+          <li className={styles.li}>
+            <Link href="/admin/pendencias" className={styles.link}>
+              <div className={styles.linkContent}>
+                <ClipboardCheck size={20} className={styles.icon} />
+                <span>Pendências</span>
+              </div>
+              <span className={styles.badge}>2</span>
             </Link>
           </li>
-          <li style={styles.li}>
-            <Link href="/admin/openingHours" style={styles.link}>Horário de funcionamento</Link>
+          <li className={styles.li}>
+            <Link href="/admin/openingHours" className={styles.link}>
+              <div className={styles.linkContent}>
+                <Clock size={20} className={styles.icon} />
+                <span>Horário de funcionamento</span>
+              </div>
+            </Link>
           </li>
         </ul>
 
-        
-        <h4 style={styles.h4}>PUBLICAÇÕES</h4>
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            <Link href="/admin/news" style={styles.link}>Notícias</Link>
+        <h4 className={styles.h4}>PUBLICAÇÕES</h4>
+        <ul className={styles.ul}>
+          <li className={styles.li}>
+            <Link href="/admin/news" className={styles.link}>
+              <div className={styles.linkContent}>
+                <FileText size={20} className={styles.icon} />
+                <span>Notícias</span>
+              </div>
+            </Link>
           </li>
-          <li style={styles.li}>
-            <Link href="/admin/multiroes" style={styles.link}>Mutirões</Link>
+          <li className={styles.li}>
+            <Link href="/admin/multiroes" className={styles.link}>
+              <div className={styles.linkContent}>
+                <Users size={20} className={styles.icon} />
+                <span>Mutirões</span>
+              </div>
+            </Link>
           </li>
-          <li style={styles.li}>
-            <Link href="/admin/projects" style={styles.link}>Projetos</Link>
+          <li className={styles.li}>
+            <Link href="/admin/projects" className={styles.link}>
+              <div className={styles.linkContent}>
+                <FolderKanban size={20} className={styles.icon} />
+                <span>Projetos</span>
+              </div>
+            </Link>
           </li>
-          <li style={styles.li}>
-            <Link href="/admin/memorias" style={styles.link}>Memórias Caiçaras</Link>
+          <li className={styles.li}>
+            <Link href="/admin/memorias" className={styles.link}>
+              <div className={styles.linkContent}>
+                <Image size={20} className={styles.icon} />
+                <span>Memórias Caiçaras</span>
+              </div>
+            </Link>
           </li>
-          <li style={styles.li}>
-            <Link href="/admin/galeria" style={styles.link}>Galeria de Fotos</Link>
+          <li className={styles.li}>
+            <Link href="/admin/galeria" className={styles.link}>
+              <div className={styles.linkContent}>
+                <Image size={20} className={styles.icon} />
+                <span>Galeria de Fotos</span>
+              </div>
+            </Link>
           </li>
-          <li style={styles.li}>
-            <Link href="/admin/documents" style={styles.link}>Documentos</Link>
+          <li className={styles.li}>
+            <Link href="/admin/documents" className={styles.link}>
+              <div className={styles.linkContent}>
+                <FileDown size={20} className={styles.icon} />
+                <span>Documentos</span>
+              </div>
+            </Link>
           </li>
         </ul>
-       
-        <h4 style={styles.h4}>USUÁRIOS</h4>
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            <Link href="/admin/userManage" style={styles.link}>Gerenciar Usuário</Link>
-          </li>
-          <li style={styles.li}>
-            <Link href="/admin/teamManage" style={styles.link}>Gerenciar Equipe</Link>
-          </li>
-        </ul> 
 
-       
-        <ul style={styles.logoutUl}>
-          <li style={styles.li}>
-            <Link href="/admin/login" style={styles.logoutLink}>Sair do sistema</Link>
+        <h4 className={styles.h4}>USUÁRIOS</h4>
+        <ul className={styles.ul}>
+          <li className={styles.li}>
+            <Link href="/admin/userManage" className={styles.link}>
+              <div className={styles.linkContent}>
+                <UserCog size={20} className={styles.icon} />
+                <span>Gerenciar Usuário</span>
+              </div>
+            </Link>
+          </li>
+          <li className={styles.li}>
+            <Link href="/admin/teamManage" className={styles.link}>
+              <div className={styles.linkContent}>
+                <UsersRound size={20} className={styles.icon} />
+                <span>Gerenciar Equipe</span>
+              </div>
+            </Link>
+          </li>
+        </ul>
+
+        <ul className={styles.logoutUl}>
+          <li className={styles.li}>
+            <Link href="/admin/login" className={styles.logoutLink}>
+              <LogOut size={20} className={styles.icon} />
+              <span>Sair do sistema</span>
+            </Link>
           </li>
         </ul>
 
@@ -62,79 +124,3 @@ export default function SideBarAdmin() {
     </div>
   );
 }
-
-
-const styles = {
-  sideBar: {
-    backgroundColor: "#045950",
-    width: "300px",
-    minHeight: "100vh",
-    padding: "30px 20px",
-    display: "flex",
-    flexDirection: "column",
-    boxSizing: "border-box",
-    fontFamily: "sans-serif",
-  },
-  titulo: {
-    color: "#ffffff",
-    fontSize: "24px",
-    fontWeight: "bold",
-    margin: "0 0 25px 0",
-  },
-  nav: {
-    display: "flex",
-    flexDirection: "column",
-    flexGrow: 1,
-  },
-  ul: {
-    listStyle: "none",
-    padding: 0,
-    margin: "0 0 20px 0",
-    display: "flex",
-    flexDirection: "column",
-    gap: "4px",
-  },
-  logoutUl: {
-    listStyle: "none",
-    padding: 0,
-    margin: "auto 0 0 0", 
-  },
-  h4: {
-    color: "#4ade80",
-    fontSize: "12px",
-    fontWeight: "bold",
-    letterSpacing: "1px",
-    margin: "10px 0 10px 12px",
-  },
-  li: {
-    display: "block",
-  },
-  link: {
-    color: "#ffffff",
-    fontSize: "16px",
-    textDecoration: "none",
-    padding: "12px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  logoutLink: {
-    color: "#fca5a5",
-    fontSize: "16px",
-    textDecoration: "none",
-    padding: "12px",
-    display: "block",
-  },
-  badge: {
-    backgroundColor: "#ef4444",
-    color: "#ffffff",
-    fontSize: "12px",
-    fontWeight: "bold",
-    borderRadius: "50%",
-    width: "20px",
-    height: "20px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-};
