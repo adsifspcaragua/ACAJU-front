@@ -30,7 +30,11 @@ body {
 }
 
 body {
-  background: linear-gradient(135deg, #045950, #2DBFAF, #045950);
+  background: radial-gradient(circle at 85% 15%, #0b8a77 0%, #045950 45%, #012b26 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  
   font-family: 'Poppins', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
