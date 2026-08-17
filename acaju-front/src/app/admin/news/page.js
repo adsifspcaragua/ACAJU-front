@@ -1,13 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
+import AdminEditor from "@/components/AdminEditor";
 import '@/app/admin/page.admin.css';
 
 export default function PublicarNoticia() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   return (
     <div style={styles.container}>
@@ -34,21 +40,24 @@ export default function PublicarNoticia() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>CONTEÚDO PRINCIPAL</label>
-            <textarea 
-              placeholder="Escreva o texto da notícia aqui..." 
-              style={{...styles.textarea, height: "200px"}} 
-            />
+            <AdminEditor />
           </div>
 
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>IMAGEM DE CAPA</label>
-              <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+              {isMounted ? (
+                <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+                  <div style={styles.uploadContainer}>
+                    <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
+                    <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+                  </div>
+                </Uploady>
+              ) : (
                 <div style={styles.uploadContainer}>
-                  <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                  <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+                  <span style={styles.uploadText}>Carregando...</span>
                 </div>
-              </Uploady>
+              )}
             </div>
 
             <div style={styles.inputGroupHalf}>
@@ -63,22 +72,27 @@ export default function PublicarNoticia() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>IMAGENS ADICIONAIS (GALERIA DA NOTÍCIA)</label>
-            <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-
-              <label style={styles.dropzone}>
-                <input 
-                  type="file" 
-                  multiple 
-                  style={{ display: "none" }} 
-                  onChange={(e) => console.log("Arquivos selecionados:", e.target.files)}
-                />
-                <span style={{fontSize: "24px"}}>📸</span>
-                <p style={styles.dropzoneText}>
-                  <strong>CLIQUE PARA SELECIONAR FOTOS ADICIONAIS</strong><br/>
-                  OU ARRASTE OS FICHEIROS PARA CÁ
-                </p>
-              </label>
-            </Uploady>
+            {isMounted ? (
+              <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+                <label style={styles.dropzone}>
+                  <input 
+                    type="file" 
+                    multiple 
+                    style={{ display: "none" }} 
+                    onChange={(e) => console.log("Arquivos selecionados:", e.target.files)}
+                  />
+                  <span style={{fontSize: "24px"}}>📸</span>
+                  <p style={styles.dropzoneText}>
+                    <strong>CLIQUE PARA SELECIONAR FOTOS ADICIONAIS</strong><br/>
+                    OU ARRASTE OS FICHEIROS PARA CÁ
+                  </p>
+                </label>
+              </Uploady>
+            ) : (
+              <div style={styles.dropzone}>
+                <p style={styles.dropzoneText}>Carregando módulo de upload...</p>
+              </div>
+            )}
           </div>
 
           <div style={styles.switchContainer}>
