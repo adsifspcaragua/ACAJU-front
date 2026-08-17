@@ -142,7 +142,7 @@ const styles = {
   },
   row: {
     display: "flex",
-    flexDirection: "column",
+    flexDirection: "row",
     gap: "28px",
     width: "100%",
     boxSizing: "border-box",
