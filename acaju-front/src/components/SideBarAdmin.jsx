@@ -30,7 +30,7 @@ export default function SideBarAdmin() {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/admin/openingHours" className={styles.link}>
+            <Link href="/admin/horarioFuncionamento" className={styles.link}>
               <div className={styles.linkContent}>
                 <Clock size={20} className={styles.icon} />
                 <span>Horário de funcionamento</span>
@@ -42,7 +42,7 @@ export default function SideBarAdmin() {
         <h4 className={styles.h4}>PUBLICAÇÕES</h4>
         <ul className={styles.ul}>
           <li className={styles.li}>
-            <Link href="/admin/news" className={styles.link}>
+            <Link href="/admin/noticias" className={styles.link}>
               <div className={styles.linkContent}>
                 <FileText size={20} className={styles.icon} />
                 <span>Notícias</span>
@@ -58,7 +58,7 @@ export default function SideBarAdmin() {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/admin/projects" className={styles.link}>
+            <Link href="/admin/projetos" className={styles.link}>
               <div className={styles.linkContent}>
                 <FolderKanban size={20} className={styles.icon} />
                 <span>Projetos</span>
@@ -66,7 +66,7 @@ export default function SideBarAdmin() {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/admin/memorias" className={styles.link}>
+            <Link href="/admin/memoriasCaicaras" className={styles.link}>
               <div className={styles.linkContent}>
                 <Image size={20} className={styles.icon} />
                 <span>Memórias Caiçaras</span>
@@ -82,7 +82,7 @@ export default function SideBarAdmin() {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/admin/documents" className={styles.link}>
+            <Link href="/admin/documentos" className={styles.link}>
               <div className={styles.linkContent}>
                 <FileDown size={20} className={styles.icon} />
                 <span>Documentos</span>
@@ -94,15 +94,15 @@ export default function SideBarAdmin() {
         <h4 className={styles.h4}>USUÁRIOS</h4>
         <ul className={styles.ul}>
           <li className={styles.li}>
-            <Link href="/admin/userManage" className={styles.link}>
+            <Link href="/admin/meuPerfil" className={styles.link}>
               <div className={styles.linkContent}>
                 <UserCog size={20} className={styles.icon} />
-                <span>Gerenciar Usuário</span>
+                <span>Meu Perfil</span>
               </div>
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/admin/teamManage" className={styles.link}>
+            <Link href="/admin/gerenciarEquipe" className={styles.link}>
               <div className={styles.linkContent}>
                 <UsersRound size={20} className={styles.icon} />
                 <span>Gerenciar Equipe</span>

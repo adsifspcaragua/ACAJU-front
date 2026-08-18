@@ -18,7 +18,7 @@ export default function GerenciarUsuario() {
 
         <div style={styles.headerContainer}>
           <div style={styles.header}>
-            <h1 style={styles.pageTitle}>Gerenciar Usuário</h1>
+            <h1 style={styles.pageTitle}>Meu Perfil</h1>
             <div style={styles.welcomeBadge}>BEM-VINDO, ADMINISTRADOR</div>
           </div>
         </div>
