@@ -59,16 +59,21 @@ export default function RepositorioDocumentos() {
 const styles = {
   container: {
     display: "flex",
-    minHeight: "100vh",
+    height: "100vh",
+    width: "100vw",
+    overflow: "hidden", 
     margin: 0,
+    backgroundColor: "transparent", 
   },
   mainContent: {
     flexGrow: 1,
+    overflowY: "auto", 
     padding: "50px",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginLeft: "300px",
   },
   headerContainer: {
     width: "100%",
