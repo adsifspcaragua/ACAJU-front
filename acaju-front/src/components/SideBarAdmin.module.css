@@ -1,12 +1,15 @@
 .sideBar {
   background-color: #012b26;
   width: 300px;
-  min-height: 100vh;
+  height: 100vh; /* Trava a altura na tela */
+  flex-shrink: 0; /* Impede a barra de encolher e sobrepor o formulário */
   padding: 30px 20px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   font-family: sans-serif;
+  position: fixed; /* Mantém a barra fixa na tela */
+  margin-right: 300px; /* Adiciona espaço à direita da barra */
 }
 
 .titulo {
@@ -20,6 +23,7 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  overflow-y: auto;
 }
 
 .ul {
@@ -35,6 +39,7 @@
   list-style: none;
   padding: 0;
   margin: auto 0 0 0;
+  padding-top: 15px; 
 }
 
 .h4 {
@@ -106,4 +111,24 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; 
+  margin: 0;
+  background-color: transparent;
+}
+
+.mainContent {
+  flex-grow: 1;
+  height: 100vh; 
+  overflow-y: auto; 
+  padding: 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -137,16 +137,21 @@ export default function GerenciarUsuario() {
 const styles = {
   container: {
     display: "flex",
-    minHeight: "100vh",
+    height: "100vh",
+    width: "100vw",
+    overflow: "hidden", 
     margin: 0,
+    backgroundColor: "transparent", 
   },
   mainContent: {
     flexGrow: 1,
+    overflowY: "auto", 
     padding: "50px",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginLeft: "300px",
   },
   headerContainer: {
     width: "100%",
@@ -190,7 +195,7 @@ const styles = {
     backgroundColor: "#ffffff",
     borderRadius: "20px",
     padding: "40px 50px",
-    boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
     display: "flex",
     flexDirection: "column",
     gap: "24px",

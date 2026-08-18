@@ -89,7 +89,7 @@ const styles = {
     backgroundColor: '#ffffff',
     width: '100%',
     maxWidth: '440px',
-    borderRadius: '16px',
+    borderRadius: '10px',
     padding: '40px',
     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
     boxSizing: 'border-box',

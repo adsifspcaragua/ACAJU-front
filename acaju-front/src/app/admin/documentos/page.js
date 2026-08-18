@@ -104,7 +104,7 @@ const styles = {
     backgroundColor: "#ffffff",
     borderRadius: "10px",
     padding: "50px",
-    boxShadow: "0 12px 30px rgba(0,0,0,0.12)",
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
     display: "flex",
     flexDirection: "column",
     gap: "28px",
