@@ -4,6 +4,7 @@ import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
+import AdminEditor from "@/components/AdminEditor";
 
 export default function RepositorioDocumentos() {
   return (
@@ -32,10 +33,7 @@ export default function RepositorioDocumentos() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>DESCRIÇÃO DO DOCUMENTO</label>
-            <textarea 
-              placeholder="Escreva um breve resumo sobre o que trata este documento..." 
-              style={styles.textarea}
-            />
+            <AdminEditor/>
           </div>
 
           <div style={styles.inputGroupFull}>

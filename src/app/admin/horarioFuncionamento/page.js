@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
+import AdminEditor from "@/components/AdminEditor";
 
 export default function HorarioFuncionamento() {
   const [status, setStatus] = useState("Aberto para Visitação");
@@ -56,10 +57,7 @@ export default function HorarioFuncionamento() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>OBSERVAÇÕES ADICIONAIS</label>
-            <textarea 
-              placeholder="Ex: Sábados das 09h às 13h. Fechado aos domingos." 
-              style={{...styles.textarea, height: "120px"}} 
-            />
+            <AdminEditor />
           </div>
 
           <button type="submit" style={styles.submitButton}>Salvar</button>

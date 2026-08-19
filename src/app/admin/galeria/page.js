@@ -4,6 +4,7 @@ import React from "react";
 import Uploady from "@rpldy/uploady";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
+import AdminEditor from "@/components/AdminEditor";
 
 export default function GaleriaDeFotos() {
   return (
@@ -35,15 +36,14 @@ export default function GaleriaDeFotos() {
               </p>
             </label>
           </Uploady>
-
-          {/* Placeholder de "Sem imagens" alinhado à esquerda como na imagem */}
+          
           <div style={styles.imagePlaceholder}>
             <span style={styles.placeholderText}>Sem imagens</span>
           </div>
 
           <div style={styles.inputGroupFull}>
-            <label style={styles.label}>DESCRIÇÃO</label>
-            <textarea style={styles.textarea} />
+            <label style={styles.label}>DESCRIÇÃO (OPCIONAL)</label>
+            <AdminEditor />
           </div>
 
           <button type="button" style={styles.submitButton}>

@@ -5,6 +5,7 @@ import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
+import AdminEditor from "@/components/AdminEditor";
 
 export default function MemoriasCaicaras() {
   return (
@@ -33,10 +34,7 @@ export default function MemoriasCaicaras() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>CONTEÚDO DA MEMÓRIA (TEXTO)</label>
-            <textarea 
-              placeholder="Relate as tradições e memórias..." 
-              style={{...styles.textarea, height: "250px"}} 
-            />
+            <AdminEditor/>
           </div>
 
           <div style={styles.row}>

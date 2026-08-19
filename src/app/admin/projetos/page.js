@@ -5,6 +5,7 @@ import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
+import AdminEditor from "@/components/AdminEditor";
 
 export default function GerenciarProjetos() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
@@ -47,10 +48,7 @@ export default function GerenciarProjetos() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>CORPO DO PROJETO (TEXTO DETALHADO)</label>
-            <textarea 
-              placeholder="Aprofunde o texto do projeto aqui..." 
-              style={{...styles.textarea, height: "200px"}} 
-            />
+            <AdminEditor/>
           </div>
 
           <div style={styles.row}>
