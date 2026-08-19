@@ -4,6 +4,7 @@ import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
+import AdminEditor from "@/components/AdminEditor";
 
 export default function GerenciarMultiroes() {
   return (
@@ -91,10 +92,7 @@ export default function GerenciarMultiroes() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>DESCRIÇÃO CURTA</label>
-            <textarea 
-              placeholder="Descreva os objetivos, ponto de encontro e recomendações do mutirão..." 
-              style={styles.textarea}
-            />
+              <AdminEditor/>
           </div>
 
           <button type="submit" style={styles.submitButton}>Publicar</button>

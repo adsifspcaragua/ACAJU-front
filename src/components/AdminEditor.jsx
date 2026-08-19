@@ -34,8 +34,7 @@ function ToolbarPlugin() {
   const [isItalic, setIsItalic] = useState(false);
   const [isUnderline, setIsUnderline] = useState(false);
   const [fontFamily, setFontFamily] = useState("Arial");
-  const [fontSize, setFontSize] = useState("16");
-  const [isInsertOpen, setIsInsertOpen] = useState(false);
+  const [fontSize, setFontSize] = useState("12");
 
   const updateToolbar = useCallback(() => {
     const selection = $getSelection();
@@ -168,34 +167,11 @@ function ToolbarPlugin() {
         🔗
       </button>
 
-      <span style={styles.separator} />
-
       {/* Alinhamentos */}
       <button type="button" onClick={() => editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "left")} style={styles.toolbarButton} title="Esquerda">⬅</button>
       <button type="button" onClick={() => editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "center")} style={styles.toolbarButton} title="Centralizar">⬌</button>
       <button type="button" onClick={() => editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "right")} style={styles.toolbarButton} title="Direita">➡</button>
       <button type="button" onClick={() => editor.dispatchCommand(FORMAT_ELEMENT_COMMAND, "justify")} style={styles.toolbarButton} title="Justificado">≡</button>
-
-      <span style={styles.separator} />
-
-      {/* Menu Insert */}
-      <div style={{ position: "relative" }}>
-        <button 
-          type="button" 
-          onClick={() => setIsInsertOpen(!isInsertOpen)} 
-          style={styles.insertDropdownBtn}
-        >
-          + Insert ▼
-        </button>
-        {isInsertOpen && (
-          <div style={styles.dropdownMenu}>
-            <div style={styles.dropdownItem} onClick={() => { alert("Recurso de Imagem"); setIsInsertOpen(false); }}>Image</div>
-            <div style={styles.dropdownItem} onClick={() => { alert("Recurso de Tabela"); setIsInsertOpen(false); }}>Table</div>
-            <div style={styles.dropdownItem} onClick={() => { alert("Recurso de Vídeo Youtube"); setIsInsertOpen(false); }}>Youtube Video</div>
-            <div style={styles.dropdownItem} onClick={() => { alert("Linha Horizontal"); setIsInsertOpen(false); }}>Horizontal Rule</div>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
@@ -242,12 +218,13 @@ const styles = {
   toolbar: {
     display: "flex",
     alignItems: "center",
+    justifyContent: "center",
     gap: "3px",
     padding: "6px 8px",
     borderBottom: "1px solid #d1d5db",
     backgroundColor: "#f9fafb",
-    flexWrap: "nowrap", // Impede a quebra para a segunda linha
-    overflowX: "auto",  // Garante usabilidade em telas menores sem quebrar o layout
+    flexWrap: "nowrap", 
+    overflowX: "auto",
     whiteSpace: "nowrap",
     position: "relative",
   },

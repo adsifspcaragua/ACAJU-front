@@ -6,6 +6,7 @@ import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import GaleriaUpload from "@/components/GaleriaUpload"; // Import do componente reutilizável
 import '@/app/admin/page.admin.css';
+import AdminEditor from "@/components/AdminEditor";
 
 export default function MemoriasCaicaras() {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,10 +41,7 @@ export default function MemoriasCaicaras() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>CONTEÚDO DA MEMÓRIA (TEXTO)</label>
-            <textarea 
-              placeholder="Relate as tradições e memórias..." 
-              style={{...styles.textarea, height: "250px"}} 
-            />
+            <AdminEditor/>
           </div>
 
           <div style={styles.row}>
