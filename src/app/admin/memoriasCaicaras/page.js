@@ -1,12 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
+import GaleriaUpload from "@/components/GaleriaUpload"; // Import do componente reutilizável
 import '@/app/admin/page.admin.css';
 
 export default function MemoriasCaicaras() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div style={styles.container}>
       <SideBarAdmin />
@@ -21,7 +28,7 @@ export default function MemoriasCaicaras() {
         </div>
 
         <form style={styles.card} onSubmit={(e) => e.preventDefault()}>
-          
+
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>TÍTULO DA MEMÓRIA / FIGURA HOMENAGEADA</label>
             <input 
@@ -42,12 +49,18 @@ export default function MemoriasCaicaras() {
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>IMAGEM DE CAPA</label>
-              <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+              {isMounted ? (
+                <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
+                  <div style={styles.uploadContainer}>
+                    <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
+                    <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+                  </div>
+                </Uploady>
+              ) : (
                 <div style={styles.uploadContainer}>
-                  <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                  <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+                  <span style={styles.uploadText}>Carregando...</span>
                 </div>
-              </Uploady>
+              )}
             </div>
 
             <div style={styles.inputGroupHalf}>
@@ -60,23 +73,11 @@ export default function MemoriasCaicaras() {
             </div>
           </div>
 
-          <div style={styles.inputGroupFull}>
-            <label style={styles.label}>IMAGENS ADICIONAIS (GALERIA DA MEMÓRIA)</label>
-            <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-              <label style={styles.dropzone}>
-                <input 
-                  type="file" 
-                  multiple 
-                  style={{ display: "none" }} 
-                />
-                <span style={{fontSize: "24px"}}>📸</span>
-                <p style={styles.dropzoneText}>
-                  <strong>CLIQUE PARA SELECIONAR FOTOS ADICIONAIS</strong><br/>
-                  OU ARRASTE OS FICHEIROS PARA CÁ
-                </p>
-              </label>
-            </Uploady>
-          </div>
+          <GaleriaUpload 
+            label="IMAGENS ADICIONAIS (GALERIA DA MEMÓRIA)"
+            titulo="CLIQUE PARA SELECIONAR FOTOS ADICIONAIS"
+            destinationUrl="https://meu-servidor.com/upload"
+          />
 
           <button type="submit" style={styles.submitButton}>Publicar</button>
 
@@ -210,30 +211,16 @@ const styles = {
     boxSizing: "border-box",
     backgroundColor: "#ffffff",
   },
-  uploadButton: {},
+  uploadButton: {
+    background: "none",
+    border: "none",
+    color: "#085747",
+    fontWeight: "bold",
+    cursor: "pointer",
+  },
   uploadText: {
     color: "#9ca3af",
     fontSize: "14px",
-  },
-  dropzone: {
-    width: "100%",
-    height: "150px",
-    border: "2px dashed #d1d5db",
-    borderRadius: "12px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f9fafb",
-    cursor: "pointer",
-    textAlign: "center",
-    gap: "10px",
-  },
-  dropzoneText: {
-    fontSize: "13px",
-    color: "#374151",
-    margin: 0,
-    lineHeight: "1.5",
   },
   submitButton: {
     backgroundColor: "#085747",

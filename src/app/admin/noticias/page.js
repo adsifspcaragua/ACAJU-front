@@ -5,6 +5,7 @@ import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import AdminEditor from "@/components/AdminEditor";
+import GaleriaUpload from "@/components/GaleriaUpload"; 
 import '@/app/admin/page.admin.css';
 
 export default function PublicarNoticia() {
@@ -70,43 +71,24 @@ export default function PublicarNoticia() {
             </div>
           </div>
 
-          <div style={styles.inputGroupFull}>
-            <label style={styles.label}>IMAGENS ADICIONAIS (GALERIA DA NOTÍCIA)</label>
-            {isMounted ? (
-              <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-                <label style={styles.dropzone}>
-                  <input 
-                    type="file" 
-                    multiple 
-                    style={{ display: "none" }} 
-                    onChange={(e) => console.log("Arquivos selecionados:", e.target.files)}
-                  />
-                  <span style={{fontSize: "24px"}}>📸</span>
-                  <p style={styles.dropzoneText}>
-                    <strong>CLIQUE PARA SELECIONAR FOTOS ADICIONAIS</strong><br/>
-                    OU ARRASTE OS FICHEIROS PARA CÁ
-                  </p>
-                </label>
-              </Uploady>
-            ) : (
-              <div style={styles.dropzone}>
-                <p style={styles.dropzoneText}>Carregando módulo de upload...</p>
-              </div>
-            )}
-          </div>
+          <GaleriaUpload 
+            label="IMAGENS ADICIONAIS (GALERIA DA NOTÍCIA)"
+            titulo="CLIQUE PARA SELECIONAR FOTOS ADICIONAIS"
+            destinationUrl="https://meu-servidor.com/upload"
+          />
 
           <div style={styles.switchContainer}>
             <div 
-                onClick={() => setSolicitarAnalise(!solicitarAnalise)}
-                style={{
-                    ...styles.switchTrack,
-                    backgroundColor: solicitarAnalise ? "#085747" : "#e5e7eb"
-                }}
+              onClick={() => setSolicitarAnalise(!solicitarAnalise)}
+              style={{
+                ...styles.switchTrack,
+                backgroundColor: solicitarAnalise ? "#085747" : "#e5e7eb"
+              }}
             >
-                <div style={{
-                    ...styles.switchThumb,
-                    transform: solicitarAnalise ? "translateX(20px)" : "translateX(0px)"
-                }} />
+              <div style={{
+                ...styles.switchThumb,
+                transform: solicitarAnalise ? "translateX(20px)" : "translateX(0px)"
+              }} />
             </div>
             <span style={styles.switchLabel}>Solicitar análise para aprovação</span>
           </div>
@@ -219,18 +201,6 @@ const styles = {
     outline: "none",
     fontFamily: "inherit",
   },
-  textarea: {
-    width: "100%",
-    padding: "14px",
-    border: "1px solid #d1d5db",
-    borderRadius: "8px",
-    fontSize: "15px",
-    color: "#374151",
-    boxSizing: "border-box",
-    resize: "none",
-    outline: "none",
-    fontFamily: "inherit",
-  },
   uploadContainer: {
     display: "flex",
     alignItems: "center",
@@ -247,26 +217,6 @@ const styles = {
   uploadText: {
     color: "#9ca3af",
     fontSize: "14px",
-  },
-  dropzone: {
-    width: "100%",
-    height: "150px",
-    border: "2px dashed #d1d5db",
-    borderRadius: "12px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f9fafb",
-    cursor: "pointer",
-    textAlign: "center",
-    gap: "10px",
-  },
-  dropzoneText: {
-    fontSize: "13px",
-    color: "#374151",
-    margin: 0,
-    lineHeight: "1.5",
   },
   switchContainer: {
     display: "flex",

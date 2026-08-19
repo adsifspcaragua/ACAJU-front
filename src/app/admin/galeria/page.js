@@ -36,11 +36,6 @@ export default function GaleriaDeFotos() {
             </label>
           </Uploady>
 
-          {/* Placeholder de "Sem imagens" alinhado à esquerda como na imagem */}
-          <div style={styles.imagePlaceholder}>
-            <span style={styles.placeholderText}>Sem imagens</span>
-          </div>
-
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>DESCRIÇÃO</label>
             <textarea style={styles.textarea} />

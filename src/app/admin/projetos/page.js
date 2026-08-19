@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Uploady from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
+import GaleriaUpload from "@/components/GaleriaUpload"; 
 import '@/app/admin/page.admin.css';
 
 export default function GerenciarProjetos() {
@@ -77,29 +78,24 @@ export default function GerenciarProjetos() {
             </div>
           </div>
 
-          <div style={styles.inputGroupFull}>
-            <label style={styles.label}>FOTOS DO PROJETO</label>
-            <div style={styles.dropzone}>
-                <span style={{fontSize: "24px"}}>📸</span>
-                <p style={styles.dropzoneText}>
-                    <strong>CLIQUE PARA SELECIONAR FOTOS DO PROJETO</strong><br/>
-                    OU ARRASTE OS FICHEIROS PARA CÁ
-                </p>
-            </div>
-          </div>
+          <GaleriaUpload 
+            label="FOTOS DO PROJETO"
+            titulo="CLIQUE PARA SELECIONAR FOTOS DO PROJETO"
+            destinationUrl="https://meu-servidor.com/upload"
+          />
 
           <div style={styles.switchContainer}>
             <div 
-                onClick={() => setSolicitarAnalise(!solicitarAnalise)}
-                style={{
-                    ...styles.switchTrack,
-                    backgroundColor: solicitarAnalise ? "#085747" : "#e5e7eb"
-                }}
+              onClick={() => setSolicitarAnalise(!solicitarAnalise)}
+              style={{
+                ...styles.switchTrack,
+                backgroundColor: solicitarAnalise ? "#085747" : "#e5e7eb"
+              }}
             >
-                <div style={{
-                    ...styles.switchThumb,
-                    transform: solicitarAnalise ? "translateX(20px)" : "translateX(0px)"
-                }} />
+              <div style={{
+                ...styles.switchThumb,
+                transform: solicitarAnalise ? "translateX(20px)" : "translateX(0px)"
+              }} />
             </div>
             <span style={styles.switchLabel}>Solicitar análise para aprovação</span>
           </div>
@@ -248,26 +244,6 @@ const styles = {
     color: "#085747",
     fontWeight: "bold",
     cursor: "pointer",
-  },
-  dropzone: {
-    width: "100%",
-    height: "150px",
-    border: "2px dashed #d1d5db",
-    borderRadius: "12px",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#f9fafb",
-    cursor: "pointer",
-    textAlign: "center",
-    gap: "10px",
-  },
-  dropzoneText: {
-    fontSize: "13px",
-    color: "#374151",
-    margin: 0,
-    lineHeight: "1.5",
   },
   switchContainer: {
     display: "flex",
