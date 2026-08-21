@@ -1,8 +1,9 @@
 'use server';
 
-import { loginSchema } from '@/schemas/authSchema';
-import { autenticarAdmin } from '@/services/authService';
+import { loginSchema, registerSchema, updateProfileSchema, changePasswordSchema } from '@/schemas/authSchema';
+import { autenticarAdmin, cadastrarAdmin, atualizarDadosAdmin, alterarSenhaAdmin } from '@/services/authService';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export async function loginAction(prevState, formData) {
   const rawData = {
@@ -33,4 +34,94 @@ export async function loginAction(prevState, formData) {
 
   // 4. Redireciona para a área administrativa
   redirect('/admin/painelAdmin');
+}
+
+
+export async function registerAction(prevState, formData) {
+  const rawData = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    pass: formData.get('pass'),
+  };
+
+  const validation = registerSchema.safeParse(rawData);
+  if (!validation.success) {
+    return {
+      errors: validation.error.flatten().fieldErrors,
+      message: 'Preencha todos os campos corretamente.',
+    };
+  }
+
+  try {
+    await cadastrarAdmin(validation.data);
+    revalidatePath('/admin');
+    return { success: true, message: 'Administrador cadastrado com sucesso!' };
+  } catch (error) {
+    if (error.message === 'EMAIL_DUPLICADO') {
+      return { message: 'Este e-mail já está cadastrado no sistema.' };
+    }
+    return { message: 'Erro interno ao cadastrar administrador.' };
+  }
+}
+
+export async function updateProfileAction(prevState, formData) {
+  console.log('--- [DEBUG UPDATE] ---');
+  const rawData = {
+    id: formData.get('id'),
+    name: formData.get('name'),
+    email: formData.get('email'),
+  };
+  console.log('1. Dados brutos recebidos:', rawData);
+
+  const validation = updateProfileSchema.safeParse(rawData);
+
+  if (!validation.success) {
+    console.log('❌ Erro no Zod:', validation.error.flatten().fieldErrors);
+    return {
+      errors: validation.error.flatten().fieldErrors,
+      message: 'Preencha os campos corretamente.',
+    };
+  }
+
+  console.log('2. Dados validados pelo Zod:', validation.data);
+
+  try {
+    const res = await atualizarDadosAdmin(validation.data);
+    console.log('3. Retorno do Prisma:', res);
+    revalidatePath('/admin/meuPerfil');
+    return { success: true, message: 'Dados atualizados com sucesso!' };
+  } catch (error) {
+    console.error('❌ Erro no Service/Prisma:', error);
+    if (error.message === 'EMAIL_DUPLICADO') {
+      return { message: 'Este e-mail já está em uso por outro administrador.' };
+    }
+    return { message: 'Erro ao atualizar informações.' };
+  }
+}
+
+export async function changePasswordAction(prevState, formData) {
+  const rawData = {
+    id: formData.get('id'),
+    currentPass: formData.get('currentPass'),
+    newPass: formData.get('newPass'),
+    confirmPass: formData.get('confirmPass'),
+  };
+
+  const validation = changePasswordSchema.safeParse(rawData);
+  if (!validation.success) {
+    return {
+      errors: validation.error.flatten().fieldErrors,
+      message: 'Verifique os requisitos da nova senha.',
+    };
+  }
+
+  try {
+    await alterarSenhaAdmin(validation.data);
+    return { success: true, message: 'Senha alterada com sucesso!' };
+  } catch (error) {
+    if (error.message === 'SENHA_INCORRETA') {
+      return { message: 'A senha atual está incorreta.' };
+    }
+    return { message: 'Erro ao alterar a senha.' };
+  }
 }
