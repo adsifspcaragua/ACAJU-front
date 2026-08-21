@@ -4,7 +4,11 @@ import React, { useState } from "react";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
 
+import { useActionState } from 'react';
+import { registerAction } from '@/actions/auth';
+
 export default function GestaoUsuarios() {
+  const [state, formAction, isPending] = useActionState(registerAction, null);
   const [perfil, setPerfil] = useState("Administrador");
 
   return (
@@ -20,26 +24,37 @@ export default function GestaoUsuarios() {
           </div>
         </div>
 
-        <form style={styles.card} onSubmit={(e) => e.preventDefault()}>
-          
+        <form action={formAction} style={styles.card}>
+
           <h2 style={styles.cardTitle}>Novo Usuário</h2>
+
+          {/* Mensagens de Feedback */}
+          {state?.message && (
+            <p className={`text-sm text-center ${state.success ? 'text-green-600' : 'text-red-500'}`}>
+              {state.message}
+            </p>
+          )}
 
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>NOME COMPLETO</label>
-              <input 
-                type="text" 
-                placeholder="Ex: Ana Julia Santana" 
+              <input
+                type="text"
+                name="name"
+                placeholder="Ex: Ana Julia Santana"
                 style={styles.input}
+                required
               />
             </div>
 
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>E-MAIL</label>
-              <input 
-                type="email" 
-                placeholder="Ex: anajulia@email.com" 
+              <input
+                type="email"
+                name="email"
+                placeholder="Ex: anajulia@email.com"
                 style={styles.input}
+                required
               />
             </div>
           </div>
@@ -47,9 +62,9 @@ export default function GestaoUsuarios() {
           <div style={styles.row}>
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>TIPO DE PERFIL</label>
-              <select 
-                value={perfil} 
-                onChange={(e) => setPerfil(e.target.value)} 
+              <select
+                value={perfil}
+                onChange={(e) => setPerfil(e.target.value)}
                 style={styles.select}
               >
                 <option value="Administrador">Administrador</option>
@@ -59,15 +74,20 @@ export default function GestaoUsuarios() {
 
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>SENHA PROVISÓRIA</label>
-              <input 
-                type="password" 
-                placeholder="Digite uma senha inicial..." 
+              <input
+                type="password"
+                name="pass"
+                placeholder="Digite uma senha inicial..."
                 style={styles.input}
+                required
               />
+              {state?.errors?.pass && (
+                <span className="text-red-500 text-xs">{state.errors.pass[0]}</span>
+              )}
             </div>
           </div>
 
-          <button type="submit" style={styles.submitButton}>Cadastrar</button>
+          <button type="submit" disabled={isPending} style={styles.submitButton}>{isPending ? 'Cadastrando...' : 'Cadastrar'}</button>
 
         </form>
       </main>
@@ -76,17 +96,17 @@ export default function GestaoUsuarios() {
 }
 
 const styles = {
-   container: {
+  container: {
     display: "flex",
     height: "100vh",
     width: "100vw",
-    overflow: "hidden", 
+    overflow: "hidden",
     margin: 0,
-    backgroundColor: "transparent", 
+    backgroundColor: "transparent",
   },
   mainContent: {
     flexGrow: 1,
-    overflowY: "auto", 
+    overflowY: "auto",
     padding: "50px",
     boxSizing: "border-box",
     display: "flex",
@@ -192,18 +212,18 @@ const styles = {
     fontFamily: "inherit",
     cursor: "pointer",
   },
-submitButton: {
-  backgroundColor: "#085747",
-  color: "#ffffff",
-  border: "none",
-  borderRadius: "8px",
-  padding: "16px 36px", 
-  fontSize: "16px",
-  fontWeight: "bold",
-  cursor: "pointer",
-  alignSelf: "center",  
-  width: "fit-content", 
-  boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  fontFamily: "inherit",
-},
+  submitButton: {
+    backgroundColor: "#085747",
+    color: "#ffffff",
+    border: "none",
+    borderRadius: "8px",
+    padding: "16px 36px",
+    fontSize: "16px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    alignSelf: "center",
+    width: "fit-content",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    fontFamily: "inherit",
+  },
 };
