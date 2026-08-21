@@ -1,12 +1,19 @@
 "use client";
 
-import Uploady from "@rpldy/uploady";
-import UploadButton from "@rpldy/upload-button";
+import React, { useState, useEffect } from "react";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
 import AdminEditor from "@/components/AdminEditor";
+import CapaUpload from "@/components/CapaUpload";
 
 export default function GerenciarMultiroes() {
+  const [imagemCapa, setImagemCapa] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <div style={styles.container}>
       <SideBarAdmin />
@@ -80,19 +87,26 @@ export default function GerenciarMultiroes() {
             </select>
           </div>
 
+          {/* COMPONENTE DE CAPA REUTILIZÁVEL */}
           <div style={styles.inputGroupFull}>
-            <label style={styles.label}>IMAGEM DE CAPA DO MUTIRÃO</label>
-            <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-              <div style={styles.uploadContainer}>
-                <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+            {isMounted ? (
+              <CapaUpload 
+                label="IMAGEM DE CAPA DO MUTIRÃO" 
+                onChange={(file) => setImagemCapa(file)} 
+              />
+            ) : (
+              <div style={styles.inputGroupFull}>
+                <label style={styles.label}>IMAGEM DE CAPA DO MUTIRÃO</label>
+                <div style={styles.loadingContainer}>
+                  <span style={styles.loadingText}>Carregando...</span>
+                </div>
               </div>
-            </Uploady>
+            )}
           </div>
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>DESCRIÇÃO CURTA</label>
-              <AdminEditor/>
+            <AdminEditor/>
           </div>
 
           <button type="submit" style={styles.submitButton}>Publicar</button>
@@ -215,32 +229,18 @@ const styles = {
     outline: "none",
     fontFamily: "inherit",
   },
-  textarea: {
-    width: "100%",
-    height: "150px",
-    padding: "14px",
-    border: "1px solid #d1d5db",
-    borderRadius: "8px",
-    fontSize: "15px",
-    color: "#374151",
-    boxSizing: "border-box",
-    resize: "none",
-    outline: "none",
-    fontFamily: "inherit",
-  },
-  uploadContainer: {
+  loadingContainer: {
     display: "flex",
     alignItems: "center",
-    gap: "14px",
     width: "100%",
-    height: "52px",
+    height: "56px",
     padding: "0 14px",
     border: "1px solid #d1d5db",
     borderRadius: "8px",
     boxSizing: "border-box",
     backgroundColor: "#ffffff",
   },
-  uploadText: {
+  loadingText: {
     color: "#9ca3af",
     fontSize: "14px",
     fontFamily: "inherit",

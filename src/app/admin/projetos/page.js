@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Uploady from "@rpldy/uploady";
-import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import GaleriaUpload from "@/components/GaleriaUpload"; 
-import '@/app/admin/page.admin.css';
+import CapaUpload from "@/components/CapaUpload";
 import AdminEditor from "@/components/AdminEditor";
+import '@/app/admin/page.admin.css';
 
 export default function GerenciarProjetos() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
+  const [imagemCapa, setImagemCapa] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -53,16 +53,20 @@ export default function GerenciarProjetos() {
           </div>
 
           <div style={styles.row}>
+            {/* NOVO COMPONENTE DE CAPA */}
             <div style={styles.inputGroupHalf}>
-              <label style={styles.label}>IMAGEM DE CAPA</label>
-
-              {isMounted && (
-                <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-                  <div style={styles.uploadContainer}>
-                    <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                    <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+              {isMounted ? (
+                <CapaUpload 
+                  label="IMAGEM DE CAPA" 
+                  onChange={(file) => setImagemCapa(file)} 
+                />
+              ) : (
+                <div style={styles.inputGroupHalf}>
+                  <label style={styles.label}>IMAGEM DE CAPA</label>
+                  <div style={styles.loadingContainer}>
+                    <span style={styles.loadingText}>Carregando...</span>
                   </div>
-                </Uploady>
+                </div>
               )}
             </div>
 
@@ -220,28 +224,21 @@ const styles = {
     outline: "none",
     fontFamily: "inherit",
   },
-  uploadContainer: {
+  loadingContainer: {
     display: "flex",
     alignItems: "center",
-    gap: "14px",
     width: "100%",
-    height: "52px",
+    height: "56px",
     padding: "0 14px",
     border: "1px solid #d1d5db",
     borderRadius: "8px",
     boxSizing: "border-box",
     backgroundColor: "#ffffff",
   },
-  uploadText: {
+  loadingText: {
     color: "#9ca3af",
     fontSize: "14px",
-  },
-  uploadButton: {
-    background: "none",
-    border: "none",
-    color: "#085747",
-    fontWeight: "bold",
-    cursor: "pointer",
+    fontFamily: "inherit",
   },
   switchContainer: {
     display: "flex",

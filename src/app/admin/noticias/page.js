@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Uploady from "@rpldy/uploady";
-import UploadButton from "@rpldy/upload-button";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import AdminEditor from "@/components/AdminEditor";
 import GaleriaUpload from "@/components/GaleriaUpload"; 
+import CapaUpload from "@/components/CapaUpload"; // <--- Novo componente importado
 import '@/app/admin/page.admin.css';
 
 export default function PublicarNoticia() {
   const [solicitarAnalise, setSolicitarAnalise] = useState(false);
+  const [imagemCapa, setImagemCapa] = useState(null); // Guarda o arquivo selecionado
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
@@ -45,18 +45,19 @@ export default function PublicarNoticia() {
           </div>
 
           <div style={styles.row}>
+            {/* NOVO COMPONENTE DE CAPA */}
             <div style={styles.inputGroupHalf}>
-              <label style={styles.label}>IMAGEM DE CAPA</label>
               {isMounted ? (
-                <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-                  <div style={styles.uploadContainer}>
-                    <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                    <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
-                  </div>
-                </Uploady>
+                <CapaUpload 
+                  label="IMAGEM DE CAPA" 
+                  onChange={(file) => setImagemCapa(file)} 
+                />
               ) : (
-                <div style={styles.uploadContainer}>
-                  <span style={styles.uploadText}>Carregando...</span>
+                <div style={styles.inputGroupHalf}>
+                  <label style={styles.label}>IMAGEM DE CAPA</label>
+                  <div style={styles.uploadContainer}>
+                    <span style={styles.uploadText}>Carregando...</span>
+                  </div>
                 </div>
               )}
             </div>
@@ -213,7 +214,6 @@ const styles = {
     boxSizing: "border-box",
     backgroundColor: "#ffffff",
   },
-  uploadButton: {},
   uploadText: {
     color: "#9ca3af",
     fontSize: "14px",
