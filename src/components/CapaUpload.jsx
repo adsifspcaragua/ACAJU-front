@@ -44,7 +44,7 @@ export default function CapaUpload({
 
       <div style={styles.box}>
         {selectedImage ? (
-          /* PREVIEW DA IMAGEM SELECIONADA */
+
           <div style={styles.previewContainer}>
             <img 
               src={selectedImage.previewUrl} 
@@ -62,7 +62,7 @@ export default function CapaUpload({
             </button>
           </div>
         ) : (
-          /* BOTÃO DE SELEÇÃO PADRÃO */
+
           <label style={styles.uploadArea}>
             <input 
               type="file" 
@@ -96,13 +96,13 @@ const styles = {
   },
   box: {
     width: "100%",
-    minHeight: "56px",
+    height: "52px", 
     border: "1px solid #d1d5db",
     borderRadius: "8px",
     backgroundColor: "#ffffff",
     display: "flex",
     alignItems: "center",
-    padding: "6px 14px",
+    padding: "0 14px",
     boxSizing: "border-box",
   },
   uploadArea: {
@@ -115,16 +115,17 @@ const styles = {
   uploadButton: {
     backgroundColor: "#f3f4f6",
     color: "#111827",
-    padding: "6px 12px",
+    padding: "5px 10px",
     borderRadius: "4px",
-    fontSize: "12px",
+    fontSize: "13.33px",
     border: "1px solid #767676",
     fontWeight: "normal",
     userSelect: "none",
   },
   uploadText: {
-    color: "#9ca3af",
-    fontSize: "14px",
+    color: "#6b7280", 
+    fontSize: "15px",
+    fontFamily: "inherit",
   },
   previewContainer: {
     display: "flex",
@@ -134,8 +135,8 @@ const styles = {
     position: "relative",
   },
   previewImage: {
-    width: "44px",
-    height: "44px",
+    width: "38px",
+    height: "38px", 
     objectFit: "cover",
     borderRadius: "6px",
     border: "1px solid #e5e7eb",
@@ -154,8 +155,8 @@ const styles = {
     color: "#ffffff",
     border: "none",
     borderRadius: "50%",
-    width: "24px",
-    height: "24px",
+    width: "22px",
+    height: "22px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
