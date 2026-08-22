@@ -74,10 +74,10 @@ export default function SideBarAdmin() {
             </Link>
           </li>
           <li className={styles.li}>
-            <Link href="/admin/galeria" className={styles.link}>
+            <Link href="/admin/miniMuseu" className={styles.link}>
               <div className={styles.linkContent}>
                 <Image size={20} className={styles.icon} />
-                <span>Galeria de Fotos</span>
+                <span>Mini-Museu</span>
               </div>
             </Link>
           </li>
