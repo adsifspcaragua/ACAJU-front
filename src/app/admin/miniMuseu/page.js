@@ -23,13 +23,13 @@ export default function MiniMuseu() {
         <div style={styles.card}>
           
           <GaleriaUpload 
-            label="FOTOS DA GALERIA"
+            label="FOTOS DO MINI-MUSEU"
             titulo="CLIQUE PARA SELECIONAR FOTOS"
             destinationUrl="https://meu-servidor.com/upload"
           />
 
           <div style={styles.inputGroupFull}>
-            <label style={styles.label}>DESCRIÇÃO (OPCIONAL)</label>
+            <label style={styles.label}>DESCRIÇÃO</label>
             <AdminEditor />
           </div>
 
