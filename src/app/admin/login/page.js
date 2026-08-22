@@ -62,9 +62,6 @@ export default function Login() {
       </form>
 
       <div style={styles.footer}>
-        <Link href="/admin/register" style={styles.primaryLink}>
-          Criar conta na plataforma
-        </Link>
         <Link href="/admin/forgotPassword/" style={styles.secondaryLink}>
           Esqueci minha senha
         </Link>

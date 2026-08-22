@@ -6,7 +6,7 @@ import '@/app/admin/page.admin.css';
 import AdminEditor from "@/components/AdminEditor";
 import GaleriaUpload from "@/components/GaleriaUpload"; 
 
-export default function GaleriaDeFotos() {
+export default function MiniMuseu() {
   return (
     <div style={styles.container}>
       <SideBarAdmin />
@@ -15,27 +15,24 @@ export default function GaleriaDeFotos() {
 
         <div style={styles.headerContainer}>
           <div style={styles.header}>
-            <h1 style={styles.pageTitle}>Galeria de Fotos</h1>
+            <h1 style={styles.pageTitle}>Mini-Museu</h1>
             <div style={styles.welcomeBadge}>BEM-VINDO, ADMINISTRADOR</div>
           </div>
         </div>
 
         <div style={styles.card}>
           
-          {/* GALERIA REUTILIZÁVEL DE FOTOS */}
           <GaleriaUpload 
-            label="FOTOS DA GALERIA"
+            label="FOTOS DO MINI-MUSEU"
             titulo="CLIQUE PARA SELECIONAR FOTOS"
             destinationUrl="https://meu-servidor.com/upload"
           />
 
-          {/* DESCRIÇÃO DA GALERIA */}
           <div style={styles.inputGroupFull}>
-            <label style={styles.label}>DESCRIÇÃO (OPCIONAL)</label>
+            <label style={styles.label}>DESCRIÇÃO</label>
             <AdminEditor />
           </div>
 
-          {/* BOTÃO PUBLICAR */}
           <button type="button" style={styles.submitButton}>
             Publicar
           </button>
