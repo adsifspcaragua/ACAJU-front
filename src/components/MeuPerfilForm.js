@@ -79,17 +79,6 @@ export default function GerenciarUsuario({ admin }) {
             </div>
 
             <div style={styles.row}>
-              <div style={styles.inputGroupHalf}>
-                <label style={styles.label}>PERFIL DE ACESSO</label>
-                <input
-                  type="text"
-                  // value={perfil}
-                  // onChange={(e) => setPerfil(e.target.value)}
-                  placeholder="Ex: Administrador"
-                  style={styles.input}
-                  disabled
-                />
-              </div>
 
               <div style={styles.inputGroupHalf}>
                 <label style={styles.label}>DATA DE CADASTRO</label>
@@ -261,18 +250,21 @@ const styles = {
   },
   cardTitle: {
     margin: 0,
-    color: "#111827",
+    alignSelf: "center",
+    color: "#024039",
     fontSize: "18px",
     fontWeight: "bold",
   },
   row: {
     display: "flex",
+    flexDirection: "column",
     gap: "28px",
     width: "100%",
     boxSizing: "border-box",
   },
   row3Cols: {
     display: "flex",
+    flexDirection: "column",
     gap: "20px",
     width: "100%",
     boxSizing: "border-box",
