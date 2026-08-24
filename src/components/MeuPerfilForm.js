@@ -78,20 +78,6 @@ export default function GerenciarUsuario({ admin }) {
               </div>
             </div>
 
-            <div style={styles.row}>
-
-              <div style={styles.inputGroupHalf}>
-                <label style={styles.label}>DATA DE CADASTRO</label>
-                <input
-                  type="text"
-                  value={dataCadastroFormatada}
-                  // onChange={(e) => setDataCadastro(e.target.value)}
-                  placeholder="Ex: 15/01/2024"
-                  style={styles.input}
-                  disabled
-                />
-              </div>
-            </div>
 
             <button type="submit" disabled={isPending} style={styles.submitButtonCenter}>
               {isPending ? 'Salvando...' : 'Salvar Alterações'}
