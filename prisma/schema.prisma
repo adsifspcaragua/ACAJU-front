@@ -116,6 +116,7 @@ model Mutirao {
 //model Project {
 //  id            String   @id @default(uuid())
 //  title         String
+//  coordinator   String
 //  objective     String   @db.Text
 //  bodyContent   String   @db.Text
 //  coverImage    String?

@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import React from "react";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
@@ -51,9 +51,17 @@ export default function Pendencias() {
                 </span>
               </div>
 
-              <button type="button" style={styles.actionButton}>
+              <Link
+                href="/admin/pendencias/analisePublicacao"
+                style={{
+                  ...styles.actionButton,
+                  textDecoration: "none",
+                  display: "inline-block",
+                  textAlign: "center"
+                }}
+              >
                 Analisar publicação
-              </button>
+              </Link>
 
             </div>
           ))}
