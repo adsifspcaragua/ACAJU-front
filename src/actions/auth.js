@@ -2,8 +2,10 @@
 
 import { loginSchema, registerSchema, updateProfileSchema, changePasswordSchema } from '@/schemas/authSchema';
 import { autenticarAdmin, cadastrarAdmin, atualizarDadosAdmin, alterarSenhaAdmin } from '@/services/authService';
+import { createSession, deleteSession  } from '../lib/session'
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
+import { cookies } from 'next/headers'
 
 export async function loginAction(prevState, formData) {
   const rawData = {
@@ -31,9 +33,9 @@ export async function loginAction(prevState, formData) {
   }
 
   // 3. (Futura criação do cookie de sessão/JWT aqui)
-
+  await createSession(admin.id);
   // 4. Redireciona para a área administrativa
-  redirect('/admin/painelAdmin');
+  redirect('/admin/meuPerfil');
 }
 
 

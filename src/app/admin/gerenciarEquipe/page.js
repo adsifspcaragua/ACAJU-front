@@ -9,7 +9,6 @@ import { registerAction } from '@/actions/auth';
 
 export default function GestaoUsuarios() {
   const [state, formAction, isPending] = useActionState(registerAction, null);
-  const [perfil, setPerfil] = useState("Administrador");
 
   return (
     <div style={styles.container}>
@@ -28,7 +27,6 @@ export default function GestaoUsuarios() {
 
           <h2 style={styles.cardTitle}>Novo Usuário</h2>
 
-          {/* Mensagens de Feedback */}
           {state?.message && (
             <p className={`text-sm text-center ${state.success ? 'text-green-600' : 'text-red-500'}`}>
               {state.message}
@@ -60,18 +58,6 @@ export default function GestaoUsuarios() {
           </div>
 
           <div style={styles.row}>
-            <div style={styles.inputGroupHalf}>
-              <label style={styles.label}>TIPO DE PERFIL</label>
-              <select
-                value={perfil}
-                onChange={(e) => setPerfil(e.target.value)}
-                style={styles.select}
-              >
-                <option value="Administrador">Administrador</option>
-                <option value="Editor">Editor</option>
-              </select>
-            </div>
-
             <div style={styles.inputGroupHalf}>
               <label style={styles.label}>SENHA PROVISÓRIA</label>
               <input
@@ -167,16 +153,10 @@ const styles = {
   },
   row: {
     display: "flex",
-    flexDirection: "row",
+    flex: 1,
+    flexDirection: "column",
     gap: "28px",
     width: "100%",
-    boxSizing: "border-box",
-  },
-  inputGroupHalf: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-    flex: 1,
     boxSizing: "border-box",
   },
   label: {

@@ -169,10 +169,7 @@ export default function GerenciarUsuario({ admin }) {
               Ao excluir sua conta, você perderá permanentemente o acesso ao painel administrativo da ACAJU. Esta ação não poderá ser desfita.
             </p>
 
-            {/* BOTÃO VERMELHO PADRONIZADO COM CLASSE CSS */}
-            <button type="button" className="admin-danger-btn">
-              Excluir Conta
-            </button>
+            <button type="button" className="admin-danger-btn">Excluir Conta</button>
           </div>
 
         </div>
@@ -251,18 +248,21 @@ const styles = {
   },
   cardTitle: {
     margin: 0,
-    color: "#111827",
+    alignSelf: "center",
+    color: "#024039",
     fontSize: "18px",
     fontWeight: "bold",
   },
   row: {
     display: "flex",
+    flexDirection: "column",
     gap: "28px",
     width: "100%",
     boxSizing: "border-box",
   },
   row3Cols: {
     display: "flex",
+    flexDirection: "column",
     gap: "20px",
     width: "100%",
     boxSizing: "border-box",
