@@ -10,9 +10,9 @@ import {
   FileDown,
   UserCog,
   UsersRound,
-  LogOut
+  FileCog,
+  LogOut,
 } from 'lucide-react';
-import  logoutForm  from './LogoutForm';
 import LogoutForm from './LogoutForm';
 
 export default function SideBarAdmin() {
@@ -28,7 +28,6 @@ export default function SideBarAdmin() {
                 <ClipboardCheck size={20} className={styles.icon} />
                 <span>Pendências</span>
               </div>
-              <span className={styles.badge}>2</span>
             </Link>
           </li>
           <li className={styles.li}>
@@ -91,9 +90,17 @@ export default function SideBarAdmin() {
               </div>
             </Link>
           </li>
+          <li className={styles.li}>
+            <Link href="/admin/gerenciarPublicacoes" className={styles.link}>
+              <div className={styles.linkContent}>
+                <FileCog size={20} className={styles.icon} />
+                <span>Gerenciar Publicações</span>
+              </div>
+            </Link>
+          </li>
         </ul>
 
-        <h4 className={styles.h4}>USUÁRIOS</h4>
+        <h4 className={styles.h4}>GERENCIAMENTO</h4>
         <ul className={styles.ul}>
           <li className={styles.li}>
             <Link href="/admin/meuPerfil" className={styles.link}>
