@@ -40,6 +40,15 @@ export default function GerenciarProjetos() {
           </div>
 
           <div style={styles.inputGroupFull}>
+            <label style={styles.label}>COORDENADOR</label>
+            <input 
+              type="text" 
+              placeholder="Nome do coordenador" 
+              style={styles.input}
+            />
+          </div>
+
+          <div style={styles.inputGroupFull}>
             <label style={styles.label}>OBJETIVO</label>
             <textarea 
               placeholder="Descreva de forma breve o objetivo..." 
