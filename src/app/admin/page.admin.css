@@ -45,20 +45,32 @@ a {
   text-decoration: none;
 }
 
-.admin-primary-btn {
+.admin-submit-btn {
   background-color: #085747 !important;
   color: #ffffff !important;
   border: none !important;
-  border-radius: 6px !important;
-  padding: 12px 34px !important;
+  border-radius: 8px !important;
+  padding: 12px 36px !important;
   font-size: 14px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   cursor: pointer !important;
+  align-self: center !important;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  transition: background-color 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+
+.admin-submit-btn:hover {
+  background-color: #053d32 !important; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+.admin-submit-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }
 
 .container {
@@ -129,4 +141,32 @@ a {
   align-items: center !important;
   vertical-align: middle !important;
   line-height: 1 !important;
+}
+
+.admin-danger-btn {
+  background-color: #d92d20 !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 12px 36px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  align-self: center !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+
+.admin-danger-btn:hover {
+  background-color: #b42318 !important; /* Vermelho mais escuro */
+  box-shadow: 0 6px 12px rgba(217, 45, 32, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+.admin-danger-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
 }

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import SideBarAdmin from './SideBarAdmin'; // ou './SideBarAdmin.jsx'
+import React from "react";
+import SideBarAdmin from './SideBarAdmin';
 import '@/app/admin/page.admin.css';
 
 import { useActionState } from 'react';
@@ -10,11 +10,6 @@ import { updateProfileAction, changePasswordAction } from '@/actions/auth';
 export default function GerenciarUsuario({ admin }) {
   const [state, formAction, isPending] = useActionState(updateProfileAction, null);
   const [passState, passAction, isPendingPass] = useActionState(changePasswordAction, null);
-
-  // const [nome, setNome] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [perfil, setPerfil] = useState("");
-  // const [dataCadastro, setDataCadastro] = useState("");
 
   const dataCadastroFormatada = admin?.createdAt
     ? new Date(admin.createdAt).toLocaleDateString('pt-BR')
@@ -52,7 +47,6 @@ export default function GerenciarUsuario({ admin }) {
                 <input
                   type="text"
                   name="name"
-                  // onChange={(e) => setNome(e.target.value)}
                   placeholder="Ex: Ana Julia Santana"
                   style={styles.input}
                   required
@@ -67,10 +61,8 @@ export default function GerenciarUsuario({ admin }) {
                 <input
                   type="email"
                   name="email"
-                  // onChange={(e) => setEmail(e.target.value)}
                   placeholder="Ex: admin@acaju.org"
                   style={styles.input}
-
                 />
                 {state?.errors?.email && (
                   <span className="text-red-500 text-xs">{state.errors.email[0]}</span>
@@ -83,8 +75,6 @@ export default function GerenciarUsuario({ admin }) {
                 <label style={styles.label}>PERFIL DE ACESSO</label>
                 <input
                   type="text"
-                  // value={perfil}
-                  // onChange={(e) => setPerfil(e.target.value)}
                   placeholder="Ex: Administrador"
                   style={styles.input}
                   disabled
@@ -96,7 +86,6 @@ export default function GerenciarUsuario({ admin }) {
                 <input
                   type="text"
                   value={dataCadastroFormatada}
-                  // onChange={(e) => setDataCadastro(e.target.value)}
                   placeholder="Ex: 15/01/2024"
                   style={styles.input}
                   disabled
@@ -104,7 +93,7 @@ export default function GerenciarUsuario({ admin }) {
               </div>
             </div>
 
-            <button type="submit" disabled={isPending} style={styles.submitButtonCenter}>
+            <button type="submit" disabled={isPending} className="admin-submit-btn">
               {isPending ? 'Salvando...' : 'Salvar Alterações'}
             </button>
           </form>
@@ -170,7 +159,7 @@ export default function GerenciarUsuario({ admin }) {
               </div>
             </div>
 
-            <button type="submit" disabled={isPendingPass} style={styles.submitButtonCenter}>
+            <button type="submit" disabled={isPendingPass} className="admin-submit-btn">
               {isPendingPass ? 'Alterando...' : 'Alterar Senha'}
             </button>
           </form>
@@ -180,7 +169,8 @@ export default function GerenciarUsuario({ admin }) {
               Ao excluir sua conta, você perderá permanentemente o acesso ao painel administrativo da ACAJU. Esta ação não poderá ser desfita.
             </p>
 
-            <button type="button" style={styles.deleteButtonCenter}>
+            {/* BOTÃO VERMELHO PADRONIZADO COM CLASSE CSS */}
+            <button type="button" className="admin-danger-btn">
               Excluir Conta
             </button>
           </div>
@@ -316,34 +306,5 @@ const styles = {
     lineHeight: "1.6",
     textAlign: "center",
     margin: "10px 0 0 0",
-  },
-  submitButtonCenter: {
-    backgroundColor: "#085747",
-    color: "#ffffff",
-    border: "none",
-    borderRadius: "8px",
-    padding: "14px 32px",
-    fontSize: "15px",
-    fontWeight: "bold",
-    cursor: "pointer",
-    alignSelf: "center",
-    width: "fit-content",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-    fontFamily: "inherit",
-    marginTop: "8px",
-  },
-  deleteButtonCenter: {
-    backgroundColor: "#d92d20 !important",
-    color: "#ffffff",
-    border: "none",
-    borderRadius: "8px",
-    padding: "14px 32px",
-    fontSize: "15px",
-    fontWeight: "bold",
-    cursor: "pointer",
-    alignSelf: "center",
-    width: "fit-content",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-    fontFamily: "inherit",
   },
 };

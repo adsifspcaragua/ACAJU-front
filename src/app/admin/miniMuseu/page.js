@@ -33,9 +33,7 @@ export default function MiniMuseu() {
             <AdminEditor />
           </div>
 
-          <button type="button" style={styles.submitButton}>
-            Publicar
-          </button>
+          <button type="submit" className="admin-submit-btn">Publicar</button>
 
         </div>
       </main>
@@ -123,8 +121,8 @@ const styles = {
     color: "#ffffff",
     border: "none",
     borderRadius: "8px",
-    padding: "12px 34px",
-    fontSize: "14px",
+    padding: "16px 36px",
+    fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
     alignSelf: "center",
