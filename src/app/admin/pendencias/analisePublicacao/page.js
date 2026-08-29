@@ -12,7 +12,6 @@ export default function AnalisePublicacao() {
   const [justificativa, setJustificativa] = useState("");
 
   const handleAprovar = () => {
-    // Aqui entrará o código do Prisma para aprovar
     router.push("/admin/pendencias");
   };
 
@@ -21,7 +20,6 @@ export default function AnalisePublicacao() {
       alert("A justificativa é obrigatória.");
       return;
     }
-    // Aqui entrará o código do Prisma para rejeitar com a justificativa
     router.push("/admin/pendencias");
   };
 
@@ -30,6 +28,13 @@ export default function AnalisePublicacao() {
       <SideBarAdmin />
 
       <main style={styles.mainContent}>
+        <div style={styles.headerContainer}>
+          <div style={styles.header}>
+            <h1 style={styles.pageTitle}>Pendências</h1>
+            <div style={styles.welcomeBadge}>BEM-VINDO, ADMINISTRADOR</div>
+          </div>
+        </div>
+        
         <div style={styles.card}>
           
           <Link href="/admin/pendencias" style={styles.voltarLink}>
@@ -216,5 +221,35 @@ const styles = {
     fontSize: "14px",
     width: "100%",
     marginTop: "15px",
-  }
+  },
+    headerContainer: {
+    width: "100%",
+    maxWidth: "950px", 
+    borderBottom: "1px solid rgba(255, 255, 255, 0.25)",
+    marginBottom: "40px",
+    paddingBottom: "15px",
+    boxSizing: "border-box",
+  },
+    header: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    width: "100%",
+    boxSizing: "border-box",
+  },
+    pageTitle: {
+    color: "#ffffff",
+    fontSize: "36px", 
+    fontWeight: "bold",
+    margin: 0,
+  },
+    welcomeBadge: {
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    color: "#ffffff",
+    padding: "10px 20px",
+    borderRadius: "6px",
+    fontSize: "13px",
+    fontWeight: "bold",
+    letterSpacing: "0.5px",
+  },
 };
