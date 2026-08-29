@@ -45,7 +45,7 @@ export default function MemoriasCaicaras() {
           </div>
 
           <div style={styles.row}>
-            {/* COMPONENTE DE CAPA REUTILIZÁVEL */}
+
             <div style={styles.inputGroupHalf}>
               {isMounted ? (
                 <CapaUpload 
@@ -78,7 +78,7 @@ export default function MemoriasCaicaras() {
             destinationUrl="https://meu-servidor.com/upload"
           />
 
-          <button type="submit" style={styles.submitButton}>Publicar</button>
+          <button type="submit" className="admin-submit-btn">Publicar</button>
 
         </form>
       </main>
@@ -207,8 +207,8 @@ const styles = {
     color: "#ffffff",
     border: "none",
     borderRadius: "8px",
-    padding: "12px 34px",
-    fontSize: "14px",
+    padding: "16px 36px",
+    fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
     alignSelf: "center",

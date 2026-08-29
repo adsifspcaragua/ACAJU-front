@@ -87,7 +87,6 @@ export default function GerenciarMultiroes() {
             </select>
           </div>
 
-          {/* COMPONENTE DE CAPA REUTILIZÁVEL */}
           <div style={styles.inputGroupFull}>
             {isMounted ? (
               <CapaUpload 
@@ -109,7 +108,7 @@ export default function GerenciarMultiroes() {
             <AdminEditor/>
           </div>
 
-          <button type="submit" style={styles.submitButton}>Publicar</button>
+          <button type="submit" className="admin-submit-btn">Publicar</button>
 
         </form>
       </main>
@@ -250,8 +249,8 @@ const styles = {
     color: "#ffffff",
     border: "none",
     borderRadius: "8px",
-    padding: "14px 36px",
-    fontSize: "14px",
+    padding: "16px 36px",
+    fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
     alignSelf: "center",

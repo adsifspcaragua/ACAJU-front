@@ -1,12 +1,30 @@
 "use client";
 
-import Uploady from "@rpldy/uploady";
-import UploadButton from "@rpldy/upload-button";
+import React, { useState, useEffect } from "react";
 import SideBarAdmin from "../../../components/SideBarAdmin";
 import '@/app/admin/page.admin.css';
 import AdminEditor from "@/components/AdminEditor";
 
 export default function RepositorioDocumentos() {
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedFile(file);
+    }
+  };
+
+  const handleRemoveFile = (e) => {
+    e.stopPropagation();
+    setSelectedFile(null);
+  };
+
   return (
     <div style={styles.container}>
       <SideBarAdmin />
@@ -38,15 +56,39 @@ export default function RepositorioDocumentos() {
 
           <div style={styles.inputGroupFull}>
             <label style={styles.label}>FICHEIRO (PDF)</label>
-            <Uploady destination={{ url: "https://meu-servidor.com/upload" }}>
-              <div style={styles.uploadContainer}>
-                <UploadButton style={styles.uploadButton}>Escolher arquivo</UploadButton>
-                <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
-              </div>
-            </Uploady>
+            <div style={styles.uploadBox}>
+              {isMounted ? (
+                selectedFile ? (
+                  <div style={styles.previewContainer}>
+                    <span style={styles.fileName}>{selectedFile.name}</span>
+                    <button 
+                      type="button" 
+                      onClick={handleRemoveFile} 
+                      style={styles.removeButton}
+                      title="Remover arquivo"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ) : (
+                  <label style={styles.uploadArea}>
+                    <input 
+                      type="file" 
+                      accept=".pdf,application/pdf" 
+                      onChange={handleFileChange} 
+                      style={{ display: "none" }} 
+                    />
+                    <span style={styles.uploadButton}>Escolher arquivo</span>
+                    <span style={styles.uploadText}>Nenhum arquivo escolhido</span>
+                  </label>
+                )
+              ) : (
+                <span style={styles.uploadText}>Carregando...</span>
+              )}
+            </div>
           </div>
 
-          <button type="submit" style={styles.submitButton}>Publicar</button>
+          <button type="submit" className="admin-submit-btn">Publicar</button>
 
         </form>
       </main>
@@ -127,6 +169,7 @@ const styles = {
     fontSize: "13px",
     fontWeight: "bold",
     letterSpacing: "0.5px",
+    textTransform: "uppercase",
   },
   input: {
     width: "100%",
@@ -140,43 +183,76 @@ const styles = {
     outline: "none",
     fontFamily: "inherit",
   },
-  textarea: {
+  uploadBox: {
     width: "100%",
-    height: "150px",
-    padding: "14px",
+    height: "52px",
     border: "1px solid #d1d5db",
     borderRadius: "8px",
-    fontSize: "15px",
-    color: "#374151",
+    backgroundColor: "#ffffff",
+    display: "flex",
+    alignItems: "center",
+    padding: "0 14px",
     boxSizing: "border-box",
-    resize: "none",
-    outline: "none",
-    fontFamily: "inherit",
   },
-  uploadContainer: {
+  uploadArea: {
     display: "flex",
     alignItems: "center",
     gap: "14px",
     width: "100%",
-    height: "52px",
-    padding: "0 14px",
-    border: "1px solid #d1d5db",
-    borderRadius: "8px",
-    boxSizing: "border-box",
-    backgroundColor: "#ffffff",
+    cursor: "pointer",
+  },
+  uploadButton: {
+    backgroundColor: "#f3f4f6",
+    color: "#111827",
+    padding: "5px 10px",
+    borderRadius: "4px",
+    fontSize: "13.33px",
+    border: "1px solid #767676",
+    fontWeight: "normal",
+    userSelect: "none",
   },
   uploadText: {
-    color: "#9ca3af",
-    fontSize: "14px",
+    color: "#6b7280",
+    fontSize: "15px",
     fontFamily: "inherit",
+  },
+  previewContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: "12px",
+    width: "100%",
+  },
+  fileName: {
+    fontSize: "14px",
+    color: "#374151",
+    fontWeight: "500",
+    flex: 1,
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+  },
+  removeButton: {
+    backgroundColor: "#ef4444",
+    color: "#ffffff",
+    border: "none",
+    borderRadius: "50%",
+    width: "22px",
+    height: "22px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    cursor: "pointer",
+    fontSize: "12px",
+    fontWeight: "bold",
+    lineHeight: 1,
   },
   submitButton: {
     backgroundColor: "#085747",
     color: "#ffffff",
     border: "none",
     borderRadius: "8px",
-    padding: "11px 36px",
-    fontSize: "14px",
+    padding: "16px 36px",
+    fontSize: "16px",
     fontWeight: "bold",
     cursor: "pointer",
     alignSelf: "center",
