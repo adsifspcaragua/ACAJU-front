@@ -1,4 +1,3 @@
-// src/app/admin/meuPerfil/page.js
 import prisma from '@/lib/prisma';
 import MeuPerfilForm from '@/components/MeuPerfilForm';
 

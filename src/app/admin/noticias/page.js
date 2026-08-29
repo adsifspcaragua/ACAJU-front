@@ -94,7 +94,7 @@ export default function PublicarNoticia() {
             <span style={styles.switchLabel}>Solicitar análise para aprovação</span>
           </div>
 
-          <button type="submit" style={styles.submitButton}>Publicar</button>
+          <button type="submit" className="admin-submit-btn">Publicar</button>
 
         </form>
       </main>

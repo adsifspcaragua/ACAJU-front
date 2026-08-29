@@ -62,7 +62,7 @@ export default function GerenciarProjetos() {
           </div>
 
           <div style={styles.row}>
-            {/* NOVO COMPONENTE DE CAPA */}
+
             <div style={styles.inputGroupHalf}>
               {isMounted ? (
                 <CapaUpload 
@@ -111,9 +111,7 @@ export default function GerenciarProjetos() {
             <span style={styles.switchLabel}>Solicitar análise para aprovação</span>
           </div>
 
-          <button type="submit" style={styles.submitButton}>
-            Publicar
-          </button>
+          <button type="submit" className="admin-submit-btn">Publicar</button>
 
         </form>
       </main>
