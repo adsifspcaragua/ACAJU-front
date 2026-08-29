@@ -1,4 +1,3 @@
-// src/services/authService.js
 import prisma from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 
