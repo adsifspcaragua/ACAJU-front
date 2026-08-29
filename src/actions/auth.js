@@ -34,6 +34,7 @@ export async function loginAction(prevState, formData) {
 
   // 3. (Futura criação do cookie de sessão/JWT aqui)
   await createSession(admin.id);
+  
   // 4. Redireciona para a área administrativa
   redirect('/admin/meuPerfil');
 }
@@ -78,7 +79,7 @@ export async function updateProfileAction(prevState, formData) {
   const validation = updateProfileSchema.safeParse(rawData);
 
   if (!validation.success) {
-    console.log('❌ Erro no Zod:', validation.error.flatten().fieldErrors);
+    console.log('Erro no Zod:', validation.error.flatten().fieldErrors);
     return {
       errors: validation.error.flatten().fieldErrors,
       message: 'Preencha os campos corretamente.',
@@ -93,7 +94,7 @@ export async function updateProfileAction(prevState, formData) {
     revalidatePath('/admin/meuPerfil');
     return { success: true, message: 'Dados atualizados com sucesso!' };
   } catch (error) {
-    console.error('❌ Erro no Service/Prisma:', error);
+    console.error('Erro no Service/Prisma:', error);
     if (error.message === 'EMAIL_DUPLICADO') {
       return { message: 'Este e-mail já está em uso por outro administrador.' };
     }
@@ -126,4 +127,9 @@ export async function changePasswordAction(prevState, formData) {
     }
     return { message: 'Erro ao alterar a senha.' };
   }
+}
+
+export async function logout() {
+  await deleteSession()
+  redirect('/admin/login')
 }

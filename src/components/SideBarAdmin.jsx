@@ -1,17 +1,19 @@
 import Link from 'next/link';
 import styles from './SideBarAdmin.module.css';
-import { 
-  ClipboardCheck, 
-  Clock, 
-  FileText, 
-  Users, 
-  FolderKanban, 
-  Image, 
-  FileDown, 
-  UserCog, 
+import {
+  ClipboardCheck,
+  Clock,
+  FileText,
+  Users,
+  FolderKanban,
+  Image,
+  FileDown,
+  UserCog,
   UsersRound,
-  LogOut 
+  LogOut
 } from 'lucide-react';
+import  logoutForm  from './LogoutForm';
+import LogoutForm from './LogoutForm';
 
 export default function SideBarAdmin() {
   return (
@@ -113,10 +115,7 @@ export default function SideBarAdmin() {
 
         <ul className={styles.logoutUl}>
           <li className={styles.li}>
-            <Link href="/admin/login" className={styles.logoutLink}>
-              <LogOut size={20} className={styles.icon} />
-              <span>Sair do sistema</span>
-            </Link>
+            <LogoutForm />
           </li>
         </ul>
 

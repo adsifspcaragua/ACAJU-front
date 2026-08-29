@@ -47,7 +47,7 @@ export async function updateSession() {
         return null
     }
 
-    const expires = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+    const expires = new Date(Date.now() + 2 * 24 * 60 * 60 * 1000)
     cookieStore.set('session', session, {
         httpOnly: true,
         secure: true,
