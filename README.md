@@ -46,11 +46,12 @@ Para testar o acesso administrativo localmente, execute o script SQL abaixo no M
 USE acaju;
 
 -- 1. Inserção de Administrador Principal
-INSERT INTO adm (name, email, pass, createdAt, updatedAt) 
+INSERT INTO adm (id, name, email, pass, createdAt, updatedAt) 
 VALUES (
+  1,
   'Angelo Souza', 
   'angelo@gmail.com', 
-  '$2a$10$7vI6V20P1vQ1iV8Xw0Zq8e9eG.E7bB1fT.1XbY7w3b3kY1V6a8K8u', 
+  '$2b$10$5.rslgsUiqPQt29EdZPT0ent8rFp8OTqgznYIp207zE/tUIHMyZnC', 
   NOW(), 
   NOW()
 );
