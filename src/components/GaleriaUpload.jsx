@@ -1,12 +1,15 @@
 "use client";
 
+
 import React, { useState, useEffect } from "react";
 import Uploady, { useBatchAddListener } from "@rpldy/uploady";
 import UploadButton from "@rpldy/upload-button";
 import { FiPlus, FiTrash2, FiX } from "react-icons/fi";
 
+
 function GaleriaConteudo({ titulo, label }) {
   const [arquivos, setArquivos] = useState([]);
+
 
   useBatchAddListener((batch) => {
     const novosArquivos = batch.items.map((item) => ({
@@ -15,23 +18,29 @@ function GaleriaConteudo({ titulo, label }) {
       url: URL.createObjectURL(item.file),
     }));
 
+
     setArquivos((prev) => [...prev, ...novosArquivos]);
   });
+
 
   const removerFoto = (idParaRemover) => {
     setArquivos((prev) => prev.filter((item) => item.id !== idParaRemover));
   };
 
+
   const limparTudo = () => {
     setArquivos([]);
   };
+
 
   return (
     <div style={styles.inputGroupFull}>
       {label && <label style={styles.label}>{label}</label>}
 
+
       <div style={styles.selectBox}>
         {arquivos.length === 0 ? (
+
 
           <UploadButton className="galeria-upload-btn">
             <div style={styles.placeholderContent}>
@@ -45,6 +54,7 @@ function GaleriaConteudo({ titulo, label }) {
             </div>
           </UploadButton>
         ) : (
+
 
           <div style={styles.innerContainer}>
             <div style={styles.previewContainer}>
@@ -64,11 +74,13 @@ function GaleriaConteudo({ titulo, label }) {
               ))}
             </div>
 
+
             <div style={styles.actionsBar}>
               <UploadButton className="btn-adicionar-mais">
                 <FiPlus size={18} color="#085747" />
                 <span>Adicionar mais fotos</span>
               </UploadButton>
+
 
               <button
                 type="button"
@@ -86,6 +98,7 @@ function GaleriaConteudo({ titulo, label }) {
   );
 }
 
+
 export default function GaleriaUpload({
   label = "FOTOS DO PROJETO",
   titulo = "CLIQUE PARA SELECIONAR FOTOS DO PROJETO",
@@ -93,9 +106,11 @@ export default function GaleriaUpload({
 }) {
   const [isMounted, setIsMounted] = useState(false);
 
+
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
 
   if (!isMounted) {
     return (
@@ -108,12 +123,14 @@ export default function GaleriaUpload({
     );
   }
 
+
   return (
     <Uploady destination={{ url: destinationUrl }} multiple>
       <GaleriaConteudo titulo={titulo} label={label} />
     </Uploady>
   );
 }
+
 
 const styles = {
   inputGroupFull: {
